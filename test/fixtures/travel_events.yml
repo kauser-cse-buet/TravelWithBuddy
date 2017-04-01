@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyString
+  max_attendance: 1
+  price: 9.99
+  start: 2017-04-01 18:52:37
+  duration: 2017-04-01 18:52:37
+
+two:
+  name: MyString
+  description: MyString
+  max_attendance: 1
+  price: 9.99
+  start: 2017-04-01 18:52:37
+  duration: 2017-04-01 18:52:37

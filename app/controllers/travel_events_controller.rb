@@ -1,0 +1,2 @@
+class TravelEventsController < ApplicationController
+end

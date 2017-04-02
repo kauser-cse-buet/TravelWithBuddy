@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>TravelBuddy</title>
-    <%= csrf_meta_tags %>
+<head>
+	<title>TravelBuddy</title>
+	<%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body>
+	<% if admin_signed_in? %>
+		<p><%= link_to 'Logout', destroy_admin_session_path, method: :delete%> | <%= current_admin.email %> </p> 
+	<% else%>
+		<p><%= link_to 'Sign In', new_admin_session_path %> </p>
+		<p><%= link_to 'Sign Up', new_admin_registration_path %> </p>
+	<% end %>
+	<p class="notice"><%= notice %></p>
+	<p class="alert"><%= alert %></p>
+	<%= yield %>
+</body>
 </html>

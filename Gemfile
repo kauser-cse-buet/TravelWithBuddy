@@ -56,3 +56,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # gems added by inroland
 gem 'annotate'
+
+# gems added by mahmmed
+gem 'devise'

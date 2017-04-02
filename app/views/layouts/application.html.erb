@@ -9,12 +9,7 @@
 </head>
 
 <body>
-	<% if admin_signed_in? %>
-		<p><%= link_to 'Logout', destroy_admin_session_path, method: :delete%> | <%= current_admin.email %> </p> 
-	<% else%>
-		<p><%= link_to 'Sign In', new_admin_session_path %> </p>
-		<p><%= link_to 'Sign Up', new_admin_registration_path %> </p>
-	<% end %>
+	<%= render 'shared/navigation' %>
 	<p class="notice"><%= notice %></p>
 	<p class="alert"><%= alert %></p>
 	<%= yield %>

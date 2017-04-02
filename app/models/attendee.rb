@@ -10,5 +10,6 @@
 #  travel_event_id :integer
 #
 
+
 class Attendee < ApplicationRecord
 end

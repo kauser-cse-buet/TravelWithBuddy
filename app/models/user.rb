@@ -10,7 +10,10 @@
 #  email      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  admin_id   :integer
 #
 
+
 class User < ApplicationRecord
+	belongs_to :admin, optional: true 
 end

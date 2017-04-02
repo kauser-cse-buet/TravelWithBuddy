@@ -1,5 +1,6 @@
 class TravelEventsController < ApplicationController
   before_action :set_travel_event, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_admin!
 
   # GET /travel_events
   # GET /travel_events.json

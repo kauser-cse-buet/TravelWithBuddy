@@ -6,10 +6,16 @@
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<ul class="nav navbar-nav">
-			<li role="presentation" class="active"><a href="#">Home</a></li>
-			<li role="presentation"><a href="#">Events</a></li>
-			<li role="presentation"><a href="#">Invitations</a></li>
-			<li role="presentation"><a href="#">Past Events</a></li>
+			<!-- Will add Javascript to make buttons active later, and add div anchors -->
+			<li role="presentation">
+				<%= link_to 'Events', home_path(anchor: '') %>
+			</li>
+			<li role="presentation">
+				<%= link_to 'Past Events', home_path(anchor: '') %>
+			</li>
+			<li role="presentation">
+				<%= link_to 'Invitations', home_path(anchor: '') %>
+			</li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 			<li>

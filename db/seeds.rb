@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+1.upto(20) do |i|
+TravelEvent.create(name: 'First Ever Event',
+				   description: 'This is the first event ever, guys.', 
+				   max_attendance: '1',
+				   price: 0,
+				   start: DateTime.now,
+				   duration: Time.new(2002, 1, 31, 1))
+end

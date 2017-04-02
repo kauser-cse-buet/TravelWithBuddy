@@ -1,25 +1,29 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Travel Events</h1>
+<h1>Events</h1>
 
-<table>
+<table id="events">
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Start</th>
+      <th>Duration</th>
     </tr>
   </thead>
 
   <tbody>
     <% @travel_events.each do |travel_event| %>
       <tr>
-        <td><%= link_to 'Show', travel_event %></td>
-        <td><%= link_to 'Edit', edit_travel_event_path(travel_event) %></td>
-        <td><%= link_to 'Destroy', travel_event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= travel_event.name %></td>
+        <td><%= travel_event.description %></td>
+        <td><%= travel_event.price %></td>
+        <td><%= travel_event.start %></td>
+        <td><%= travel_event.duration.strftime("%H:%M:%S") %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Travel Event', new_travel_event_path %>

@@ -25,3 +25,6 @@ awsome rail gem list
 - https://github.com/ekremkaraca/awesome-rails#generators
 - https://github.com/sdogruyol/awesome-ruby#data-visualization
 
+
+facebook event api reference 
+- https://developers.facebook.com/docs/graph-api/reference/event

@@ -26,6 +26,15 @@ class TravelEventsController < ApplicationController
     @invitations = Invitation.all
   end
 
+  def join
+    
+  end
+
+  def join_event
+    @travel_event_id = params[:id]
+    Attendee.create(paid: true, user_id:current_admin.id,travel_event_id:@travel_event_id)
+  end
+
   def create_invitations
     @user_ids = params[:user_ids]
     @des = params[:description]

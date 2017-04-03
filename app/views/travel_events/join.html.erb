@@ -1,0 +1,9 @@
+<%= form_tag join_event_path do %>
+<div>
+<div>Payment amount:</div> <%= TravelEvent.find(params[:id]).price%>  
+</div>
+
+  <div class="actions">
+    <%= submit_tag 'Invite'%>
+  </div>
+<% end %>

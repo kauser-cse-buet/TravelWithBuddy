@@ -16,7 +16,7 @@
       <tr>
         <td><%= invitation.from %></td>
         <td><%= invitation.description %></td>
-        <td><%= link_to 'Join', new_invitations_path(:id => travel_event.id) %></td>
+        <td><%= link_to 'Join', join_path(:id => invitation.travel_event_id) %></td>
       </tr>
     <% end %>
   </tbody>

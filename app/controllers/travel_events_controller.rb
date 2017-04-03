@@ -41,7 +41,9 @@ class TravelEventsController < ApplicationController
   def add_review
     @travel_event_id = params[:id]
     @des = params[:description]
-    Review.create(user_id:current_admin.id, travel_event_id:@travel_event_id,description:@des)
+    if Review.create(user_id:current_admin.id, travel_event_id:@travel_event_id,description:@des)
+      redirect_to travel_event_url, notice: 'Review added to event successfully.'
+    end
   end
 
   def create_invitations

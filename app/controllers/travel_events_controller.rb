@@ -14,6 +14,7 @@ class TravelEventsController < ApplicationController
     @travel_event = TravelEvent.find(params[:id])
     @reviews = Review.where(travel_event_id: @travel_event.id)
     @users = User.all
+    @has_review = @reviews.where(user_id:current_admin.id).count > 0
   end
 
   # GET /travel_events/new
@@ -124,6 +125,6 @@ class TravelEventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def travel_event_params
-      params.fetch(:travel_event, {})
+      params.require(:travel_event).permit(:name, :description, :max_attendance, :price, :start, :duration,:travel_destination_id)
     end
 end

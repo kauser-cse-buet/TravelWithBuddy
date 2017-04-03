@@ -11,7 +11,48 @@
     </div>
   <% end %>
 
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </div>
+
+  <div class="field">
+    <%= f.label :max_attendance %>
+    <%= f.number_field :max_attendance %>
+  </div>
+
+  <div class="field">
+    <%= f.label :price %>
+    <%= f.text_field :price %>
+  </div>
+
+  <div class="field">
+    <%= f.label :start %>
+    <%= f.datetime_select :start %>
+  </div>
+
+  <div class="field">
+    <%= f.label :duration %>
+    <%= f.time_select :duration %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Destination" %> <br> 
+    <%= f.collection_select(:travel_destination_id, TravelDestination.all, :id,   :address, :include_blank => "--------" ) %>
+    <%= link_to "Add new", new_travel_destination_path,target: :_blank %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
+
+
+
+
 <% end %>

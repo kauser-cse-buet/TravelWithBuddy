@@ -11,6 +11,9 @@ class TravelEventsController < ApplicationController
   # GET /travel_events/1
   # GET /travel_events/1.json
   def show
+    @travel_event = TravelEvent.find(params[:id])
+    @reviews = Review.where(travel_event_id: @travel_event.id)
+    @users = User.all
   end
 
   # GET /travel_events/new
@@ -38,7 +41,9 @@ class TravelEventsController < ApplicationController
   def add_review
     @travel_event_id = params[:id]
     @des = params[:description]
-    Review.create(user_id:current_admin.id, travel_event_id:@travel_event_id,description:@des)
+    if Review.create(user_id:current_admin.id, travel_event_id:@travel_event_id,description:@des)
+      redirect_to travel_event_url, notice: 'Review added to event successfully.'
+    end
   end
 
   def create_invitations
@@ -60,6 +65,8 @@ class TravelEventsController < ApplicationController
   end
 
   def new_invitations
+    @event = TravelEvent.find(params[:id])
+
     @invitations = []
     User.all.each do |user|
       @invitation = Invitation.new

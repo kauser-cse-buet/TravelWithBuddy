@@ -1,54 +1,74 @@
-
 <%= form_tag add_review_path do %>
+<!-- <p id="notice"><%= notice %></p> -->
+<div class="container" style="border: 1px solid #5bc0de;">
 
-<p id="notice"><%= notice %></p>
+  <div class="row">
+    <div class="col-lg-12">
+      <h1>Name: <%= @travel_event.name %></h1>
+    </div>
+  </div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @travel_event.name %>
-</p>
+  <div class="row">
+    <div class="col-lg-6">
+      Max Attendance: <%= @travel_event.max_attendance %> <br/>
+      Price: <%= @travel_event.price %>
+    </div>
+    <div class="col-lg-6 text-right">
+      Start Date: <%= @travel_event.start %> <br/>
+      Duration: <%= @travel_event.duration %>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="col-lg-12">
+      <h3>Description: </h3><br/>
+      <%= @travel_event.description %>
+    </div>
+  </div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @travel_event.description %>
-</p>
+  <div class="row custom-table-row">
+    <div class="col-lg-12">
+      Add a review: 
+    </div>
+  </div>
 
+  <div class="row row-padding">
+    <div class="col-lg-12">
+      <%= text_area_tag 'description', nil, class: 'col-lg-12 input-md'%>
+    </div>
+  </div>
 
-<p>
-  <strong>Max Attendance:</strong>
-  <%= @travel_event.max_attendance %>
-</p>
+  <div class="row row-padding">
+    <div class="col-lg-12">
+      <%= submit_tag 'Add', class: "btn btn-sm btn-default"%>
+    </div>
+  </div>
 
-<p>
-  <strong>Price:</strong>
-  <%= @travel_event.price %>
-</p>
+  <div class="row custom-table-row">
+    <div class="col-lg-12">
+      <h3>Reviews: </h3>
+    </div>
+  </div>
 
-<p>
-  <strong>Start:</strong>
-  <%= @travel_event.start %>
-</p>
+  <% @reviews.each do |review| %>
+    <div class="row custom-table-row">
+      <div class="col-lg-2">
+        <%= link_to User.where(id: review.user_id).take.email, user_path(review.user_id) %>
+      </div>
 
-<p>
-  <strong>Duration:</strong>
-  <%= @travel_event.duration %>
-</p>
+      <div class="col-lg-2">
+        <%= review.description %>
+      </div>
 
-<p>
-  <strong>Give review:</strong>
-  <%= text_field_tag("description") %> 
-   <%= submit_tag 'Add'%>
-</p>
-
-  <% Review.where(:travel_event_id == @travel_event.id).each do |review| %>
-    <p>
-      <div><%= link_to User.where(:id==review.user_id).first().email, user_path(review.user_id) %></div>
- 		<%= review.description %>
-    </p>
+    </div>
   <% end %>
 
+  <div class="row custom-table-row">
+    <div class="col-lg-12">
+      <%= link_to 'Edit', edit_travel_event_path(@travel_event), class: "btn btn-sm btn-primary"%>
+      <%= link_to 'Back', travel_events_path, class: "btn btn-sm btn-danger" %>
+    </div>
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_travel_event_path(@travel_event) %> |
-<%= link_to 'Back', travel_events_path %>
 <% end %>

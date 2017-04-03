@@ -1,31 +1,28 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Events</h1>
-
-<table id="events">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th>Start</th>
-      <th>Duration</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @travel_events.each do |travel_event| %>
+<div class="container">
+  <h2>Events</h2>
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= travel_event.name %></td>
-        <td><%= travel_event.description %></td>
-        <td><%= travel_event.price %></td>
-        <td><%= travel_event.start %></td>
-        <td><%= travel_event.duration.strftime("%H:%M:%S") %></td>
-        <td><%= link_to 'Invite', new_invitations_path(:id => travel_event.id) %></td>
-        <td><%= link_to 'Show', travel_event %></td>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Start</th>
+        <th>Duration</th>
+        <th colspan="2"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+    </thead>
+    <tbody>
+      <% @travel_events.each do |travel_event| %>
+        <tr>
+          <td><%= travel_event.name %></td>
+          <td><%= travel_event.description %></td>
+          <td><%= travel_event.price %></td>
+          <td><%= travel_event.start %></td>
+          <td><%= travel_event.duration.strftime("%H:%M:%S") %></td>
+          <td><%= link_to 'Invite', new_invitations_path(:id => travel_event.id), class: 'btn btn-sm btn-default' %></td>
+          <td><%= link_to 'Show', travel_event, class: 'btn btn-sm btn-primary'%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

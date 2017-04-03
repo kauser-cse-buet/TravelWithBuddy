@@ -16,3 +16,7 @@ image upload instruction
 - gem 'carrierwave'
 - rails g uploader image
 - rails g migration AddImageToUsers image:string
+
+payment with paypal
+- https://launchschool.com/blog/basic-paypal-checkout-processing-in-rails
+

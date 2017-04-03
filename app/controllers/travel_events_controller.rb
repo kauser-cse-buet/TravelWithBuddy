@@ -22,6 +22,10 @@ class TravelEventsController < ApplicationController
   def edit
   end
 
+  def invitations
+    @invitations = Invitation.all
+  end
+
   def create_invitations
     @user_ids = params[:user_ids]
     @des = params[:description]

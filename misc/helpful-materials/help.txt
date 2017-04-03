@@ -8,3 +8,6 @@ User Profile Template
 command for application
 
 rails g migration AddAdminRefToUsers admin:references
+
+image upload 
+- https://medium.com/@mauddev/rails-5-and-carrierwave-53960ec20c4b

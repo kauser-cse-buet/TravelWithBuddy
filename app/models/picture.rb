@@ -13,5 +13,6 @@
 #
 
 
+
 class Picture < ApplicationRecord
 end

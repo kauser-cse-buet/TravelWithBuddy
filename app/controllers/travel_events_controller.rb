@@ -23,7 +23,7 @@ class TravelEventsController < ApplicationController
   end
 
   def invitations
-    @invitations = Invitation.all
+    @invitations = Invitation.where(:user_id == current_admin.id)
   end
 
   def join
@@ -33,6 +33,12 @@ class TravelEventsController < ApplicationController
   def join_event
     @travel_event_id = params[:id]
     Attendee.create(paid: true, user_id:current_admin.id,travel_event_id:@travel_event_id)
+  end
+
+  def add_review
+    @travel_event_id = params[:id]
+    @des = params[:description]
+    Review.create(user_id:current_admin.id, travel_event_id:@travel_event_id,description:@des)
   end
 
   def create_invitations

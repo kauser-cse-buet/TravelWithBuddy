@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/travel_events/inviations', to: 'travel_events#invitations', as: 'invitations'
   get '/travel_events/join/:id', to: 'travel_events#join', as: 'join'
   post '/travel_events/join_event', to: 'travel_events#join_event', as: 'join_event'
+  post '/travel_events/add_review', to: 'travel_events#add_review', as: 'add_review'
   get '/home', to: 'travel_events#index', as: 'home'
   get '/users', to: 'users#index', as: 'users'
   get '/users/:id/edit', to: 'users#edit', as: 'edit_user'

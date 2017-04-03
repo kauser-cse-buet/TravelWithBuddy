@@ -1,4 +1,54 @@
+
+<%= form_tag add_review_path do %>
+
 <p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @travel_event.name %>
+</p>
+
+
+<p>
+  <strong>Description:</strong>
+  <%= @travel_event.description %>
+</p>
+
+
+<p>
+  <strong>Max Attendance:</strong>
+  <%= @travel_event.max_attendance %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @travel_event.price %>
+</p>
+
+<p>
+  <strong>Start:</strong>
+  <%= @travel_event.start %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @travel_event.duration %>
+</p>
+
+<p>
+  <strong>Give review:</strong>
+  <%= text_field_tag("description") %> 
+   <%= submit_tag 'Add'%>
+</p>
+
+  <% Review.where(:travel_event_id == @travel_event.id).each do |review| %>
+    <p>
+      <div><%= link_to User.where(:id==review.user_id).first().email, user_path(review.user_id) %></div>
+ 		<%= review.description %>
+    </p>
+  <% end %>
+
 
 <%= link_to 'Edit', edit_travel_event_path(@travel_event) %> |
 <%= link_to 'Back', travel_events_path %>
+<% end %>

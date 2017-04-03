@@ -60,6 +60,8 @@ class TravelEventsController < ApplicationController
   end
 
   def new_invitations
+    @event = TravelEvent.find(params[:id])
+
     @invitations = []
     User.all.each do |user|
       @invitation = Invitation.new

@@ -1,20 +1,64 @@
 <%= form_tag create_invitations_path do %>
-<div>
-<div>Description</div>
-<%= text_field_tag("description") %>  
-</div>
-<ul>
-  <% @invitations.each do |invitation| %>
-    <%= fields_for 'invitation[]', invitation do |p| %>
 
-      <li>
-      	<%= check_box_tag "user_ids[]", invitation.user_id %><%= User.find(invitation.user_id).first_name %>
-      </li>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
 
-    <% end %>
-  <% end %>
-  <div class="actions">
-    <%= submit_tag 'Invite'%>
+
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <%= @event.name%>
+          </h3>
+        </div>
+
+        <div class="panel-body">
+          <div class="row">
+            <div class=" col-md-12">
+              Description: 
+            </div>
+          </div>
+
+          <div class="row row-padding">
+            <div class=" col-md-12">
+              <%= text_area_tag "description", nil, class: 'col-md-12'%>  
+            </div>
+          </div>
+
+          <div class="row custom-table-row">
+            <div class="col-md-12">
+              Users: 
+            </div>
+          </div>
+
+          <% @invitations.each do |invitation| %>
+            <%= fields_for 'invitation[]', invitation do |p| %>
+
+              <div class="row custom-table-row">
+                <div class="col-md-2">
+                  <%= check_box_tag "user_ids[]", invitation.user_id %>
+                </div>
+                <div class="col-md-10">
+                  <%= User.find(invitation.user_id).first_name %>  
+                </div>
+              </div>
+
+            <% end %>
+          <% end %>
+
+          <div class="row custom-table-row">
+            <div class="actions col-md-12">
+              <div class="actions">
+                <%= submit_tag 'Invite', class: 'btn btn-md btn-primary'%>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        
+      </div>
+    </div>
   </div>
-  </ul>
+</div>
+
 <% end %>

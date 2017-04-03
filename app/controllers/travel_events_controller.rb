@@ -34,7 +34,7 @@ class TravelEventsController < ApplicationController
       end
     end
     if !error
-      
+      redirect_to home_url
     else
 
     end

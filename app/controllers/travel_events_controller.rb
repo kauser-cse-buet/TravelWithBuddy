@@ -11,6 +11,9 @@ class TravelEventsController < ApplicationController
   # GET /travel_events/1
   # GET /travel_events/1.json
   def show
+    @travel_event = TravelEvent.find(params[:id])
+    @reviews = Review.where(travel_event_id: @travel_event.id)
+    @users = User.all
   end
 
   # GET /travel_events/new

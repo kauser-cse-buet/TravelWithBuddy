@@ -50,10 +50,10 @@
     </div>
   </div>
 
-  <% Review.where(:travel_event_id == @travel_event.id).each do |review| %>
+  <% @reviews.each do |review| %>
     <div class="row custom-table-row">
       <div class="col-lg-2">
-        <%= link_to User.where(:id==review.user_id).first().email, user_path(review.user_id) %>
+        <%= link_to User.where(id: review.user_id).take.email, user_path(review.user_id) %>
       </div>
 
       <div class="col-lg-2">

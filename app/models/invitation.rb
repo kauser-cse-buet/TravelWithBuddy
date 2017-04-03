@@ -11,5 +11,6 @@
 #  travel_event_id :integer
 #
 
+
 class Invitation < ApplicationRecord
 end

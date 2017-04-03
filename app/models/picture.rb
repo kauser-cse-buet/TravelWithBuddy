@@ -12,5 +12,6 @@
 #  user_id               :integer
 #
 
+
 class Picture < ApplicationRecord
 end

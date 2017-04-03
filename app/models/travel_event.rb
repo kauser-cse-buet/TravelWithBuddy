@@ -15,5 +15,6 @@
 #  user_id               :integer
 #
 
+
 class TravelEvent < ApplicationRecord
 end

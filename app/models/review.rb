@@ -11,5 +11,6 @@
 #  user_id         :integer
 #
 
+
 class Review < ApplicationRecord
 end

@@ -21,6 +21,7 @@
         <td><%= travel_event.price %></td>
         <td><%= travel_event.start %></td>
         <td><%= travel_event.duration.strftime("%H:%M:%S") %></td>
+        <td><%= link_to 'Invite', new_invitations_path(:id => travel_event.id) %></td>
       </tr>
     <% end %>
   </tbody>

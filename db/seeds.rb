@@ -14,3 +14,9 @@ TravelEvent.create(name: 'First Ever Event',
 				   start: DateTime.now,
 				   duration: Time.new(2002, 1, 31, 1))
 end
+
+
+User.create!(first_name: 'Kauser', last_name: 'Ahmed', address: 'memphis', phone: '9013154477', email: 'ahmed@memphis.edu')
+User.create!(first_name: 'Isaac', last_name: 'Roland', address: 'memphis', phone: '9013158877', email: 'isaac@memphis.edu')
+User.create!(first_name: 'Maminur', last_name: 'Islam', address: 'memphis', phone: '9013154467', email: 'mislam@memphis.edu')
+User.create!(first_name: 'Nazmul', last_name: 'Hasan', address: 'memphis', phone: '9013154477', email: 'ahmed@memphis.edu')

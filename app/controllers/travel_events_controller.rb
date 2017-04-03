@@ -22,6 +22,34 @@ class TravelEventsController < ApplicationController
   def edit
   end
 
+  def create_invitations
+    @user_ids = params[:user_ids]
+    @des = params[:description]
+    @from = current_admin.id
+    error = false
+    @user_ids.each do |id|
+      @invitation = Invitation.create(description: @des,from: @from, user_id: id,travel_event_id: params[:id])
+      if !@invitation.id
+        error = true
+      end
+    end
+    if !error
+      
+    else
+
+    end
+  end
+
+  def new_invitations
+    @invitations = []
+    User.all.each do |user|
+      @invitation = Invitation.new
+      @invitation.travel_event_id = params[:id]
+      @invitation.user_id = user.id
+      @invitations << @invitation
+    end
+  end
+
   # POST /travel_events
   # POST /travel_events.json
   def create

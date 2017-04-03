@@ -1,0 +1,19 @@
+<%= form_tag create_invitations_path do %>
+<div>Description</div>
+<%= text_field_tag("description") %>  
+
+<ul>
+  <% @invitations.each do |invitation| %>
+    <%= fields_for 'invitation[]', invitation do |p| %>
+
+      <li>
+      	<%= check_box_tag "user_ids[]", invitation.user_id %><%= User.find(invitation.user_id).first_name %>
+      </li>
+
+    <% end %>
+  <% end %>
+  <div class="actions">
+    <%= submit_tag 'Invite'%>
+  </div>
+  </ul>
+<% end %>

@@ -1,4 +1,19 @@
 <p id="notice"><%= notice %></p>
 
+<p>
+  <strong>Address:</strong>
+  <%= @travel_destination.address %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @travel_destination.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @travel_destination.state %>
+</p>
+
 <%= link_to 'Edit', edit_travel_destination_path(@travel_destination) %> |
 <%= link_to 'Back', travel_destinations_path %>

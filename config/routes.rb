@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :travel_destinations
   get '/travel_events/:id/inviation', to: 'travel_events#new_invitations', as: 'new_invitations'
   post '/travel_events/:id/inviation', to: 'travel_events#create_invitations', as: 'create_invitations'
   get '/travel_events/inviations', to: 'travel_events#invitations', as: 'invitations'
@@ -14,7 +15,7 @@ Rails.application.routes.draw do
 
   devise_for :admins, controllers: { registrations: "devise_override/registrations" }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
- 
+  resources :travel_events
   root to: "travel_events#index"
  
   end

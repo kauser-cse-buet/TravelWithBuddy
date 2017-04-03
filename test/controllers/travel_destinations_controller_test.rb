@@ -17,7 +17,7 @@ class TravelDestinationsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create travel_destination" do
     assert_difference('TravelDestination.count') do
-      post travel_destinations_url, params: { travel_destination: {  } }
+      post travel_destinations_url, params: { travel_destination: { address: @travel_destination.address, city: @travel_destination.city, state: @travel_destination.state } }
     end
 
     assert_redirected_to travel_destination_url(TravelDestination.last)
@@ -34,7 +34,7 @@ class TravelDestinationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update travel_destination" do
-    patch travel_destination_url(@travel_destination), params: { travel_destination: {  } }
+    patch travel_destination_url(@travel_destination), params: { travel_destination: { address: @travel_destination.address, city: @travel_destination.city, state: @travel_destination.state } }
     assert_redirected_to travel_destination_url(@travel_destination)
   end
 

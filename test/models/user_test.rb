@@ -11,7 +11,9 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  admin_id   :integer
+#  image      :string
 #
+
 
 
 require 'test_helper'

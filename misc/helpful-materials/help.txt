@@ -20,3 +20,8 @@ image upload instruction
 payment with paypal
 - https://launchschool.com/blog/basic-paypal-checkout-processing-in-rails
 
+awsome rail gem list 
+- https://github.com/hothero/awesome-rails-gem#file-uploading
+- https://github.com/ekremkaraca/awesome-rails#generators
+- https://github.com/sdogruyol/awesome-ruby#data-visualization
+

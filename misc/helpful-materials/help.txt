@@ -11,3 +11,8 @@ rails g migration AddAdminRefToUsers admin:references
 
 image upload 
 - https://medium.com/@mauddev/rails-5-and-carrierwave-53960ec20c4b
+
+image upload instruction 
+- gem 'carrierwave'
+- rails g uploader image
+- rails g migration AddImageToUsers image:string

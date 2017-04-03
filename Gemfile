@@ -64,3 +64,5 @@ gem 'annotate'
 
 # gems added by mahmmed
 gem 'devise'
+gem 'carrierwave' 
+gem 'mini_magick'

@@ -47,7 +47,8 @@ class UsersController < ApplicationController
   						 last_name: params[:user][:last_name],
 				  		 address: params[:user][:address],
 				  		 phone: params[:user][:phone],
-				  		 email: params[:user][:email])
+				  		 email: params[:user][:email],
+               image: params[:user][:image])
 	  		@admin = @user.admin
 	  		@admin.email = @user.email
 	  		if @admin.save

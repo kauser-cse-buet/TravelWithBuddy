@@ -21,7 +21,7 @@
 			<li>
 				<% if admin_signed_in? %>
 					<li><%= link_to 'Logout', destroy_admin_session_path, method: :delete%></li>
-					<li><%= link_to current_admin.email, user_path(current_admin.id) %></li>
+					<li><%= link_to current_admin.email, user_path(current_admin.id), style: 'color: #00f !important' %></li>
 				<% else%>
 					<li><%= link_to 'Sign In', new_admin_session_path %></li>
 					<li><%= link_to 'Sign Up', new_admin_registration_path %></li>

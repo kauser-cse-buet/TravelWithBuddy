@@ -28,3 +28,7 @@ awsome rail gem list
 
 facebook event api reference 
 - https://developers.facebook.com/docs/graph-api/reference/event
+
+Add swiper slider in event page 
+- http://idangero.us/swiper/demos/#.WONDmTvytPY
+autoplay 

@@ -1,33 +1,22 @@
 <div class="container">
-  <h2>Events</h2>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Destination</th>
-        <th>Price</th>
-        <th>Start</th>
-        <th>Duration</th>
-        <th colspan="2"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @travel_events.each do |travel_event| %>
-        <tr>
-          <td><%= link_to travel_event.name, travel_event_path(:id => travel_event.id) %>
-          </td>
-          <td><%= travel_event.description %></td>
-          <td><%= TravelDestination.all.where(id:travel_event.travel_destination_id).first().address %></td>
-          <td><%= travel_event.price %></td>
-          <td><%= travel_event.start %></td>
-          <td><%= travel_event.duration.strftime("%H:%M:%S") %></td>
-          <td><%= link_to 'Invite', new_invitations_path(:id => travel_event.id), class: 'btn btn-sm btn-default' %></td>
-          <td><%= link_to 'Show', travel_event, class: 'btn btn-sm btn-primary'%></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+
+<%= form_for_filterrific @filterrific do |f| %>
+  <div>
+    Search
+    <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
+    <%= f.text_field(
+      :search_query,
+      class: 'filterrific-periodically-observed'
+    ) %>
+  </div>
+  <%= render_filterrific_spinner %>
+<% end %>
+
+<%= render(
+  partial: 'travel_events/list',
+  locals: { travel_events: @travel_events }
+) %>
+
 </div>
 
 

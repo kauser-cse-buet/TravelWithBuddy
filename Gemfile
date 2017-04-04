@@ -61,6 +61,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # gems added by inroland
 gem 'annotate'
+gem 'filterrific'
+gem 'will_paginate'
 
 # gems added by mahmmed
 gem 'devise'

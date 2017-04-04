@@ -11,11 +11,13 @@
       </tr>
     </thead>
     <tbody>
+
       <% @invitations.each do |invitation| %>
       <% @user = User.all.where(id:invitation.user_id).first() %>
       <% @event = TravelEvent.all.where(id:invitation.travel_event_id).first() %>
       <tr>
-        <td><%= @event.name %></td>
+        <td><%= link_to @event.name, travel_event_path(:id => invitation.travel_event_id) %>
+        </td>
         <td><%= @event.description %></td>
         <td><%= @user.first_name + " " + @user.last_name %></td>
         <td><%= invitation.description %></td>
@@ -25,3 +27,4 @@
     </tbody>
   </table>
 </div>
+

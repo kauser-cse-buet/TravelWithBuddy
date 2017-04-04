@@ -3,6 +3,8 @@
   <table class="table">
     <thead>
       <tr>
+        <th>Event name</th>
+        <th>Event description</th>
         <th>From</th>
         <th>Description</th>
         <th colspan="3"></th>
@@ -10,8 +12,12 @@
     </thead>
     <tbody>
       <% @invitations.each do |invitation| %>
+      <% @user = User.all.where(id:invitation.user_id).first() %>
+      <% @event = TravelEvent.all.where(id:invitation.travel_event_id).first() %>
       <tr>
-        <td><%= invitation.from %></td>
+        <td><%= @event.name %></td>
+        <td><%= @event.description %></td>
+        <td><%= @user.first_name + " " + @user.last_name %></td>
         <td><%= invitation.description %></td>
         <td><%= link_to 'Join', join_path(:id => invitation.travel_event_id), class: 'btn btn-sm btn-primary' %></td>
       </tr>

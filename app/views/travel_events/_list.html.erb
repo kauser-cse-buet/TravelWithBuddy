@@ -20,7 +20,7 @@
 		  <td><%= link_to travel_event.name, travel_event_path(:id => travel_event.id) %>
           </td>
           <td><%= travel_event.description %></td>
-          <td><%= travel_event.travel_destination_id %></td>
+          <td><%= travel_event.travel_destination.address %></td>
           <td><%= travel_event.price %></td>
           <td><%= travel_event.start %></td>
           <td><%= travel_event.duration.strftime("%H:%M:%S") %></td>

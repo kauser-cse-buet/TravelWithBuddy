@@ -15,10 +15,11 @@
     <tbody>
       <% @travel_events.each do |travel_event| %>
         <tr>
-          <td><%= travel_event.name %></td>
+          <td><%= link_to travel_event.name, travel_event_path(:id => travel_event.id) %>
+          </td>
           <td><%= travel_event.description %></td>
-          <td><%= travel_event.description %></td>
-          <td><%= @destination %></td>
+          <td><%= TravelDestination.all.where(id:travel_event.travel_destination_id).first().address %></td>
+          <td><%= travel_event.price %></td>
           <td><%= travel_event.start %></td>
           <td><%= travel_event.duration.strftime("%H:%M:%S") %></td>
           <td><%= link_to 'Invite', new_invitations_path(:id => travel_event.id), class: 'btn btn-sm btn-default' %></td>

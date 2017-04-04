@@ -27,7 +27,7 @@ class TravelEventsController < ApplicationController
   end
 
   def invitations
-    @invitations = Invitation.where(:user_id == current_admin.id)
+    @invitations = Invitation.all.where(user_id:current_admin.id)
   end
 
   def join

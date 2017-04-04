@@ -5,6 +5,7 @@
       <tr>
         <th>Name</th>
         <th>Description</th>
+        <th>Destination</th>
         <th>Price</th>
         <th>Start</th>
         <th>Duration</th>
@@ -16,7 +17,8 @@
         <tr>
           <td><%= travel_event.name %></td>
           <td><%= travel_event.description %></td>
-          <td><%= travel_event.price %></td>
+          <td><%= travel_event.description %></td>
+          <td><%= @destination %></td>
           <td><%= travel_event.start %></td>
           <td><%= travel_event.duration.strftime("%H:%M:%S") %></td>
           <td><%= link_to 'Invite', new_invitations_path(:id => travel_event.id), class: 'btn btn-sm btn-default' %></td>

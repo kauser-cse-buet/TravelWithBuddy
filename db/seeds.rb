@@ -6,12 +6,24 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+TravelDestination.create!(address: 'Walt Disney World', city: 'Orlando', state: 'Florida')
+TravelDestination.create!(address: 'Las Vegas Strip', city: 'Las Vegas', state: 'Nevada')
+TravelDestination.create!(address: 'Grand Central Terminal', city: 'New York', state: 'New York')
+TravelDestination.create!(address: 'Magic Kingdom', city: 'Orlando', state: 'Florida')
+TravelDestination.create!(address: 'Disneyland Resort', city: 'Anaheim', state: 'California')
+TravelDestination.create!(address: 'Golden Gate Bridge', city: 'San Francisco', state: 'California')
+TravelDestination.create!(address: 'Faneuil Hall Marketplace', city: 'Boston', state: 'Massachusetts')
+TravelDestination.create!(address: 'Golden Gate Park', city: 'San Francisco', state: 'California')
+TravelDestination.create!(address: 'Pike Place Market', city: 'Seattle', state: 'Washington')
+TravelDestination.create!(address: 'South Street Seaport', city: 'New York', state: 'New York')
+
 1.upto(20) do |i|
 TravelEvent.create(name: 'First Ever Event',
 				   description: 'This is the first event ever, guys.', 
 				   max_attendance: '1',
 				   price: 0,
 				   start: DateTime.now,
+				   travel_destination_id: 1,
 				   duration: Time.new(2002, 1, 31, 1))
 end
 
@@ -38,13 +50,3 @@ admin_milu.save
 
 
 
-TravelDestination.create!(address: 'Walt Disney World', city: 'Orlando', state: 'Florida')
-TravelDestination.create!(address: 'Las Vegas Strip', city: 'Las Vegas', state: 'Nevada')
-TravelDestination.create!(address: 'Grand Central Terminal', city: 'New York', state: 'New York')
-TravelDestination.create!(address: 'Magic Kingdom', city: 'Orlando', state: 'Florida')
-TravelDestination.create!(address: 'Disneyland Resort', city: 'Anaheim', state: 'California')
-TravelDestination.create!(address: 'Golden Gate Bridge', city: 'San Francisco', state: 'California')
-TravelDestination.create!(address: 'Faneuil Hall Marketplace', city: 'Boston', state: 'Massachusetts')
-TravelDestination.create!(address: 'Golden Gate Park', city: 'San Francisco', state: 'California')
-TravelDestination.create!(address: 'Pike Place Market', city: 'Seattle', state: 'Washington')
-TravelDestination.create!(address: 'South Street Seaport', city: 'New York', state: 'New York')

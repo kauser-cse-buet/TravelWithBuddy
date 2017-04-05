@@ -51,8 +51,8 @@ ActiveRecord::Schema.define(version: 20170403010918) do
   end
 
   create_table "pictures", force: :cascade do |t|
-    t.string   "description"
-    t.binary   "image_data"
+    t.string   "title"
+    t.string   "image"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
     t.integer  "travel_destination_id"

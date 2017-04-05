@@ -10,11 +10,13 @@ class TravelDestinationsController < ApplicationController
   # GET /travel_destinations/1
   # GET /travel_destinations/1.json
   def show
+    @pictures = Picture.all.where(travel_destination_id:@travel_destination.id)
   end
 
   # GET /travel_destinations/new
   def new
     @travel_destination = TravelDestination.new
+    @picture = Picture.new
   end
 
   # GET /travel_destinations/1/edit
@@ -24,10 +26,14 @@ class TravelDestinationsController < ApplicationController
   # POST /travel_destinations
   # POST /travel_destinations.json
   def create
-    @travel_destination = TravelDestination.new(travel_destination_params)
+    @address = params[:travel_destination][:address]
+    @city = params[:travel_destination][:city]
+    @state = params[:travel_destination][:state]
+    @travel_destination = TravelDestination.create(address:@address,city:@city,state:@state)
+    
 
     respond_to do |format|
-      if @travel_destination.save
+      if @travel_destination.id > 0
         format.html { redirect_to @travel_destination, notice: 'Travel destination was successfully created.' }
         format.json { render :show, status: :created, location: @travel_destination }
       else
@@ -35,19 +41,30 @@ class TravelDestinationsController < ApplicationController
         format.json { render json: @travel_destination.errors, status: :unprocessable_entity }
       end
     end
+    @picture = Picture.create(title:@address,image:params[:travel_destination][:image],travel_destination_id:@travel_destination.id)
+    if @picture.id > 0
+
+    end
   end
 
   # PATCH/PUT /travel_destinations/1
   # PATCH/PUT /travel_destinations/1.json
   def update
+    @address = params[:travel_destination][:address]
+    @city = params[:travel_destination][:city]
+    @state = params[:travel_destination][:state]
     respond_to do |format|
-      if @travel_destination.update(travel_destination_params)
+      if @travel_destination.update(address:@address,city:@city,state:@state)
         format.html { redirect_to @travel_destination, notice: 'Travel destination was successfully updated.' }
         format.json { render :show, status: :ok, location: @travel_destination }
       else
         format.html { render :edit }
         format.json { render json: @travel_destination.errors, status: :unprocessable_entity }
       end
+    end
+    @image = params[:travel_destination][:image]
+    if not @image.nil? 
+      Picture.create(title:@address,image:params[:travel_destination][:image],travel_destination_id:@travel_destination.id)
     end
   end
 
@@ -71,4 +88,5 @@ class TravelDestinationsController < ApplicationController
     def travel_destination_params
       params.require(:travel_destination).permit(:address, :city, :state)
     end
+
 end

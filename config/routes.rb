@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :pictures
   resources :travel_destinations
   get '/travel_events/:id/inviation', to: 'travel_events#new_invitations', as: 'new_invitations'
   post '/travel_events/:id/inviation', to: 'travel_events#create_invitations', as: 'create_invitations'

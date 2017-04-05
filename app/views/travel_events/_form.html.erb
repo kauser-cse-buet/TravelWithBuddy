@@ -1,56 +1,113 @@
 <%= form_for(travel_event) do |f| %>
-  <% if travel_event.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(travel_event.errors.count, "error") %> prohibited this travel_event from being saved:</h2>
+<% if travel_event.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(travel_event.errors.count, "error") %> prohibited this travel_event from being saved:</h2>
 
-      <ul>
-      <% travel_event.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <ul>
+    <% travel_event.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+
+<div class="row">
+  <div class=" col-md-12">
+   <%= f.label :name %>
+ </div>
+</div>
+
+<div class="row row-padding">
+  <div class=" col-md-12">
+    <%= f.text_field :name %> 
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :description %>
-    <%= f.text_field :description %>
+<div class="row">
+  <div class=" col-md-12">
+   <%= f.label :description %>
+ </div>
+</div>
+
+<div class="row row-padding">
+  <div class=" col-md-12">
+    <%= f.text_field :description %> 
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :max_attendance %>
+
+<div class="row">
+  <div class=" col-md-12">
+   <%= f.label :max_attendance %>
+ </div>
+</div>
+
+<div class="row row-padding">
+  <div class=" col-md-12">
     <%= f.number_field :max_attendance %>
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :price %>
+<div class="row">
+  <div class=" col-md-12">
+   <%= f.label :price %>
+ </div>
+</div>
+
+<div class="row row-padding">
+  <div class=" col-md-12">
     <%= f.text_field :price %>
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :start %>
-    <%= f.datetime_select :start %>
-  </div>
 
-  <div class="field">
-    <%= f.label :duration %>
+
+<div class="row">
+  <div class=" col-md-12">
+   <%= f.label :start %>
+ </div>
+</div>
+
+<div class="row row-padding">
+  <div class=" col-md-12">
+   <%= f.datetime_select :start, :ampm => true, :minute_step => 15%>
+ </div>
+</div>
+
+<div class="row">
+  <div class=" col-md-12">
+   <%= f.label :duration %>
+ </div>
+</div>
+
+<div class="row row-padding">
+  <div class=" col-md-12">
     <%= f.time_select :duration %>
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label "Destination" %> <br> 
-    <%= f.collection_select(:travel_destination_id, TravelDestination.all, :id,   :address, :include_blank => "--------" ) %>
-    <%= link_to "Add new", new_travel_destination_path,target: :_blank %>
-  </div>
+<div class="row">
+  <div class=" col-md-12">
+   <%= f.label :destination %>
+ </div>
+</div>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<div class="row row-padding">
+  <div class=" col-md-12">
+   <%= f.collection_select :travel_destination_id, TravelDestination.all, :id,:address %>
+   <%= link_to "Add new", new_travel_destination_path,target: :_blank %>
+ </div>
+</div>
+
+
+
+</br>
+
+<div class="actions">
+  <%= f.submit %>
+</div>
 
 
 

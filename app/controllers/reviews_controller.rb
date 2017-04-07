@@ -48,7 +48,7 @@ class ReviewsController < ApplicationController
         format.html { redirect_to travel_event_url(review_params[:travel_event_id]), notice: 'Review was successfully updated.' }
         format.json { render :show, status: :ok, location: @review }
       else
-        flash.now[:alert] = 'Review add failed.'
+        flash.now[:alert] = 'Review update failed.'
         format.html { render :edit }
         format.json { render json: @review.errors, status: :unprocessable_entity }
       end

@@ -1,23 +1,38 @@
 <div class="container">
 
-<%= form_for_filterrific @filterrific do |f| %>
-  <div>
-    Search
-    <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
-    <%= f.text_field(
-      :search_query,
-      class: 'filterrific-periodically-observed'
-    ) %>
-  </div>
-  <%= render_filterrific_spinner %>
-<% end %>
+  <div class="row">
+    <div class="row mt-5 mb-5">
+      <div class="col-md-12">
+        <%= link_to 'New Travel Event', new_travel_event_path, class: "btn btn-sm btn-primary"%>  
+      </div>
+    </div>
 
-<%= render(
-  partial: 'travel_events/list',
-  locals: { travel_events: @travel_events }
-) %>
+    <div class="row mt-5 mb-5">
+      <div class="col-md-12">
+        <%= form_for_filterrific @filterrific do |f| %>
+          <div>
+            Search
+            <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
+            <%= f.text_field(
+              :search_query,
+              class: 'filterrific-periodically-observed'
+            ) %>
+          </div>
+          <%= render_filterrific_spinner %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="row mt-5 mb-5">
+      <div class="col-md-12">
+        <%= render(
+          partial: 'travel_events/list',
+          locals: { travel_events: @travel_events }
+        ) %>    
+      </div>
+    </div>
+    
+  </div>
+
 
 </div>
-
-
-<%= link_to 'New Travel Event', new_travel_event_path %>

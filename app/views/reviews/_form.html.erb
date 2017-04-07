@@ -19,7 +19,7 @@
           <%= f.label :rating%>:
         </div>
         <div class="col-md-8">
-          <%= f.number_field :rating, step: :any %>
+          <%= f.number_field :rating, step: :any, class: "col-md-3"%>
         </div>
       </div>
 
@@ -28,16 +28,16 @@
           <%= f.label :description %>:
         </div>
         <div class="col-md-8">
-          <%= f.text_field :description %>
+          <%= f.text_area :description, class: "col-md-12"%>
         </div>
       </div>
 
       <div class="row custom-table-row">
-        <div class="actions col-md-4">
-          <%= f.submit 'Save', class: "btn btn-sm btn-primary"%>
-        </div>
-        <div class="col-md-8">
-          <%= link_to 'Cancel', travel_event_path(review.travel_event_id), class: "btn btn-sm btn-danger" %>
+        <div class="actions col-md-12">
+          <div class="text-center">
+            <%= f.submit 'Save', class: "btn btn-sm btn-primary"%>
+            <%= link_to 'Cancel', travel_event_path(review.travel_event_id), class: "btn btn-sm btn-danger" %>
+          </div>
         </div>
       </div>
   </div>

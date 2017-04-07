@@ -18,6 +18,7 @@
 
 
 class User < ApplicationRecord
-	belongs_to :admin, optional: true 
+	belongs_to :admin, optional: true
+	has_many :reviews
 	mount_uploader :image, ImageUploader
 end

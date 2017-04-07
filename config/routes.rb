@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get '/users/:id', to: 'users#show', as: 'user'
   patch '/users/:id', to: 'users#update'
   put '/users/:id', to: 'users#update'
+  delete '/users/:id', to: 'users#destroy'
 
   get '/reviews/new/:travel_event_id', to: 'reviews#new', as: 'new_review'
   get '/reviews', to: 'reviews#index', as: 'reviews'

@@ -48,7 +48,7 @@
 											<div class="row text-center">
 												<% if @user.admin_id == current_admin.id %> 
 													<%= link_to 'Edit User', edit_user_path(@user),  class: 'btn btn-sm btn-primary'%>
-													<%= link_to 'Delete User', user_path(@user), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-sm btn-danger'%>
+													<%= link_to 'Delete User', registration_path(current_admin), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-sm btn-danger'%>
 												<% end %>
 												<%= link_to 'Back', travel_events_path,  class: 'btn btn-sm btn-warning'%>
 											</div>

@@ -15,7 +15,7 @@ class DeviseOverride::RegistrationsController < Devise::RegistrationsController
   def destroy
     super
     if resource.destroy
-        @user = User.find(user_id: resource.id)
+        @user = User.where(admin_id: resource.id).take
         @user.destroy
     end
   end

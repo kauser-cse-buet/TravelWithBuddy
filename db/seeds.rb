@@ -33,15 +33,15 @@ admin_isaac = Admin.create!(email: 'isaac@memphis.edu', password: '123456', pass
 admin_mislam = Admin.create!(email: 'mislam@memphis.edu', password: '123456', password_confirmation: '123456')
 admin_milu = Admin.create!(email: 'milu@memphis.edu', password: '123456', password_confirmation: '123456')
 
-ahmmed = User.create!(first_name: 'Kauser', last_name: 'Ahmed', address: 'memphis', phone: '9013154477', email: admin_ahmmed.email)
-isaac = User.create!(first_name: 'Isaac', last_name: 'Roland', address: 'memphis', phone: '9013158877', email: admin_isaac.email)
-mislam = User.create!(first_name: 'Maminur', last_name: 'Islam', address: 'memphis', phone: '9013154467', email: admin_mislam.email)
-milu = User.create!(first_name: 'Milu', last_name: 'Hasan', address: 'memphis', phone: '9013154477', email: admin_milu.email)
+admin_ahmmed.user = User.create(first_name: 'Kauser', last_name: 'Ahmed', address: 'memphis', phone: '9013154477', email: admin_ahmmed.email)
+admin_isaac.user = User.create(first_name: 'Isaac', last_name: 'Roland', address: 'memphis', phone: '9013158877', email: admin_isaac.email)
+admin_mislam.user = User.create(first_name: 'Maminur', last_name: 'Islam', address: 'memphis', phone: '9013154467', email: admin_mislam.email)
+admin_milu.user = User.create(first_name: 'Milu', last_name: 'Hasan', address: 'memphis', phone: '9013154477', email: admin_milu.email)
 
-admin_ahmmed.user = ahmmed
-admin_isaac.user = isaac
-admin_mislam.user = mislam
-admin_milu.user = milu
+# admin_ahmmed.user = ahmmed
+# admin_isaac.user = isaac
+# admin_mislam.user = mislam
+# admin_milu.user = milu
 
 admin_ahmmed.save
 admin_isaac.save

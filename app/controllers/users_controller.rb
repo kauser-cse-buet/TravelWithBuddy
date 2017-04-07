@@ -67,6 +67,7 @@ end
   def destroy
   	@user.destroy
   	respond_to do |format|
+      session[:admin_id] = nil
   		format.html { redirect_to travel_events_url, notice: 'User was successfully deleted.' }
   		format.json { head :no_content }
   	end

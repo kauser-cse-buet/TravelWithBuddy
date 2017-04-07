@@ -23,7 +23,6 @@ Rails.application.routes.draw do
   get '/reviews/:id/edit', to: 'reviews#edit', as: 'edit_review'
   patch '/reviews/:id', to: 'reviews#update'
   put '/reviews/:id', to: 'reviews#update'
-  delete '/reviews/:id', to: 'reviews#destroy'
 
   devise_for :admins, controllers: { registrations: "devise_override/registrations" }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

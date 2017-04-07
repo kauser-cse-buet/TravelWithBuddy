@@ -53,12 +53,14 @@
         <td><%= link_to User.where(id: review.user_id).take.email, user_path(review.user_id) %></td>
         <td><%= review.rating %></td>
         <td><%= review.description %></td>
-        <% if review.user_id == current_admin.id%>
         <td>
-          <%= link_to 'Edit', edit_review_path(review), class: "btn btn-sm btn-primary"%>
-          <%= link_to 'delete', review_path(review), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-sm btn-danger" %>
+          <% if review.user_id == current_admin.id%>
+          
+            <%= link_to 'Edit', edit_review_path(review), class: "btn btn-sm btn-primary"%>
+            <%= link_to 'delete', review_path(review), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-sm btn-danger" %>
+          
+          <%end%>
         </td>
-        <%end%>
       </tr>
       <% end %>
     </tbody>

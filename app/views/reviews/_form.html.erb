@@ -1,6 +1,6 @@
 <%= form_for(review) do |f| %>
   <% if review.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" class="center-block">
       <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
 
       <ul>

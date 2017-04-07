@@ -15,6 +15,15 @@ Rails.application.routes.draw do
   patch '/users/:id', to: 'users#update'
   put '/users/:id', to: 'users#update'
 
+  get '/reviews/new/:travel_event_id', to: 'reviews#new', as: 'new_review'
+  get '/reviews', to: 'reviews#index', as: 'reviews'
+  post '/reviews', to: 'reviews#create'
+  get '/reviews/:id', to: 'reviews#show', as: 'review'
+  get '/reviews/:id/edit', to: 'reviews#edit', as: 'edit_review'
+  patch '/reviews/:id', to: 'reviews#update'
+  put '/reviews/:id', to: 'reviews#update'
+  delete '/reviews/:id', to: 'reviews#destroy'
+
   devise_for :admins, controllers: { registrations: "devise_override/registrations" }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :travel_events

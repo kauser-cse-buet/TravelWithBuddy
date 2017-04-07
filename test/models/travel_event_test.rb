@@ -17,6 +17,7 @@
 
 
 
+
 require 'test_helper'
 
 class TravelEventTest < ActiveSupport::TestCase

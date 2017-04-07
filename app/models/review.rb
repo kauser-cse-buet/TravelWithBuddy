@@ -3,7 +3,7 @@
 # Table name: reviews
 #
 #  id              :integer          not null, primary key
-#  rating          :integer
+#  rating          :decimal(, )
 #  description     :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
@@ -13,5 +13,8 @@
 
 
 
+
 class Review < ApplicationRecord
+	belongs_to :travel_event, optional: true
+	validates :rating, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 5 }
 end

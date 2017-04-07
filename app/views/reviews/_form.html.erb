@@ -1,0 +1,44 @@
+<%= form_for(review) do |f| %>
+  <% if review.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
+
+      <ul>
+      <% review.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :travel_event_id %>
+  <%= f.hidden_field :user_id %>
+  <div class="col-md-12">
+      <div class="row custom-table-row">
+        <div class="col-md-4">
+          <%= f.label :rating%>:
+        </div>
+        <div class="col-md-8">
+          <%= f.number_field :rating, step: :any %>
+        </div>
+      </div>
+
+      <div class="row custom-table-row">
+        <div class="col-md-4">
+          <%= f.label :description %>:
+        </div>
+        <div class="col-md-8">
+          <%= f.text_field :description %>
+        </div>
+      </div>
+
+      <div class="row custom-table-row">
+        <div class="actions col-md-4">
+          <%= f.submit 'Save', class: "btn btn-sm btn-primary"%>
+        </div>
+        <div class="col-md-8">
+          <%= link_to 'Cancel', travel_event_path(review.travel_event_id), class: "btn btn-sm btn-danger" %>
+        </div>
+      </div>
+  </div>
+<% end %>

@@ -32,3 +32,9 @@ facebook event api reference
 Add swiper slider in event page 
 - http://idangero.us/swiper/demos/#.WONDmTvytPY
 autoplay 
+
+
+facebook integration
+https://launchschool.com/blog/facebook-graph-api-using-omniauth-facebook-and-koala
+
+

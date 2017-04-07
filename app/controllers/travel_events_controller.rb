@@ -59,14 +59,6 @@ class TravelEventsController < ApplicationController
     Attendee.create(paid: true, user_id:current_admin.id,travel_event_id:@travel_event_id)
   end
 
-  def add_review
-    @travel_event_id = params[:id]
-    @des = params[:description]
-    if Review.create(user_id:current_admin.id, travel_event_id:@travel_event_id,description:@des)
-      redirect_to travel_event_url, notice: 'Review added to event successfully.'
-    end
-  end
-
   def create_invitations
     @user_ids = params[:user_ids]
     @des = params[:description]

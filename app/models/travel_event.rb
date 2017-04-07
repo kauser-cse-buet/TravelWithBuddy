@@ -17,6 +17,7 @@
 
 
 
+
 class TravelEvent < ApplicationRecord
 	
 	filterrific(
@@ -27,6 +28,7 @@ class TravelEvent < ApplicationRecord
 	  )
 	  
 	  belongs_to :travel_destination, :foreign_key => 'travel_destination_id'
+	  has_many :reviews
 	  
 	  scope :search_query, lambda { |query|
 	  # Matches using LIKE, automatically appends '%' to each term.

@@ -1,5 +1,3 @@
-<%= form_tag add_review_path do %>
-<!-- <p id="notice"><%= notice %></p> -->
 <div class="container" style="border: 1px solid #5bc0de;">
 
   <div class="row">
@@ -26,44 +24,47 @@
     </div>
   </div>
 
-  <% if @has_review == false %>
-    <div class="row custom-table-row">
-      <div class="col-lg-12">
-        Add a review: 
-      </div>
-    </div>
-
-    <div class="row row-padding">
-      <div class="col-lg-12">
-        <%= text_area_tag 'description', nil, class: 'col-lg-12 input-md'%>
-      </div>
-    </div>
-
-    <div class="row row-padding">
-      <div class="col-lg-12">
-        <%= submit_tag 'Add', class: "btn btn-sm btn-default"%>
-      </div>
-    </div>
-  <% end %>
-
   <div class="row custom-table-row">
     <div class="col-lg-12">
       <h3>Reviews: </h3>
     </div>
   </div>
 
-  <% @reviews.each do |review| %>
-    <div class="row custom-table-row">
-      <div class="col-lg-2">
-        <%= link_to User.where(id: review.user_id).take.email, user_path(review.user_id) %>
-      </div>
-
-      <div class="col-lg-2">
-        <%= review.description %>
-      </div>
-
+  <div class="row row-padding">
+    <div class="col-lg-12">
+      <%= link_to 'Write a review', new_review_path(travel_event_id: @travel_event.id), class: "btn btn-sm btn-primary"%>
     </div>
-  <% end %>
+  </div>
+
+  <% if @reviews.size > 0 %>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Reviewer</th>
+        <th>Rating</th>
+        <th>Review</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @reviews.each do |review| %>
+      <tr>
+        <td><%= link_to User.where(id: review.user_id).take.email, user_path(review.user_id) %></td>
+        <td><%= review.rating %></td>
+        <td><%= review.description %></td>
+        <% if review.user_id == current_admin.id%>
+        <td>
+          <%= link_to 'Edit', edit_review_path(review), class: "btn btn-sm btn-primary"%>
+          <%= link_to 'delete', review_path(review), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-sm btn-danger" %>
+        </td>
+        <%end%>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%end%>
 
   <div class="row custom-table-row">
     <div class="col-lg-12">
@@ -72,5 +73,3 @@
     </div>
   </div>
 </div>
-
-<% end %>

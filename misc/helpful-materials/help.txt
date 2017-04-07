@@ -37,4 +37,11 @@ autoplay
 facebook integration
 https://launchschool.com/blog/facebook-graph-api-using-omniauth-facebook-and-koala
 
+free hosting with heroku
+- https://devcenter.heroku.com/articles/getting-started-with-ruby#introduction
+github integration with heroku
+- https://devcenter.heroku.com/articles/github-integration#manual-deploys
+
+
+
 

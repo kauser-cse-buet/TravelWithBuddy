@@ -10,3 +10,4 @@ A web application for travel event management.
 - rails db:migrate db:seed.
 - sudo apt install imagemagick (for image upload resize it requires a c program.)
 - rails s -b 0.0.0.0
+- go to web browser localhost:3000

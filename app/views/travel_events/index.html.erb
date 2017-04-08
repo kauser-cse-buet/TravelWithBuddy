@@ -11,14 +11,18 @@
       <div class="col-md-12">
         <%= form_for_filterrific @filterrific do |f| %>
           <div>
-            Search
+            <div class="col-sm-11">
             <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
             <%= f.text_field(
               :search_query,
-              class: 'filterrific-periodically-observed'
+			  placeholder: "Search for an upcoming event",
+              class: 'filterrific-periodically-observed form-control'
             ) %>
+			</div>
+			<div class="col-sm-1">
+			<%= render_filterrific_spinner %>
+			</div>
           </div>
-          <%= render_filterrific_spinner %>
         <% end %>
       </div>
     </div>

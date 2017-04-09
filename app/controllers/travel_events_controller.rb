@@ -9,6 +9,21 @@ class TravelEventsController < ApplicationController
 	@filterrific = initialize_filterrific(
       TravelEvent,
       params[:filterrific],
+	  default_filter_params: {},
+    ) or return
+	
+	@travel_events = @filterrific.find.page(params[:page])
+	
+	respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+  
+  def past_events
+	@filterrific = initialize_filterrific(
+      TravelEvent,
+      params[:filterrific],
     ) or return
 	
 	@travel_events = @filterrific.find.page(params[:page])

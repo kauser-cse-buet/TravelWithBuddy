@@ -24,12 +24,20 @@ class TravelEvent < ApplicationRecord
                 search_query
                ]
 			   
-	  self.per_page = 10
+	self.per_page = 10
 	  
-	  belongs_to :travel_destination, :foreign_key => 'travel_destination_id'
-	  has_many :reviews
+	belongs_to :travel_destination, :foreign_key => 'travel_destination_id'
+	has_many :reviews
+	
+	scope :start_gte, lambda { |reference_dt|
+		where('travel_events.start >= ?', reference_dt)
+	}
+	
+	scope :start_lt, lambda { |reference_dt|
+		where('travel_events.start < ?', reference_dt)
+	}
 	  
-	  scope :search_query, lambda { |query|
+	scope :search_query, lambda { |query|
 	  
 	  # Matches using LIKE, automatically appends '%' to each term.
 	  # LIKE is case INsensitive with MySQL, however it is case

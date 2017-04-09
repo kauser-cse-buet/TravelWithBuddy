@@ -7,13 +7,13 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<ul class="nav navbar-nav">
 			<!-- Will add Javascript to make buttons active later, and add div anchors -->
-			<li role="presentation">
+			<li class="<%= 'active' if current_page?(home_path) %>" id="events" role="presentation">
 				<%= link_to 'Events', home_path(anchor: '') %>
 			</li>
-			<li role="presentation">
+			<li id="past_events" role="presentation">
 				<%= link_to 'Past Events', home_path(anchor: '') %>
 			</li>
-			<li role="presentation">
+			<li class="<%= 'active' if current_page?(invitations_path) %>" id="invitations" role="presentation">
 				<%= link_to 'Invitations', invitations_path %>
 			</li>
 		</ul>

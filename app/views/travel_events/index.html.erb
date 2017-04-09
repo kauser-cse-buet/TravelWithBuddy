@@ -1,17 +1,17 @@
 <div class="container">
 
   <div class="row">
-    <div class="row mt-5 mb-5">
-      <div class="col-md-12">
-        <%= link_to 'New Travel Event', new_travel_event_path, class: "btn btn-sm btn-primary"%>  
-      </div>
-    </div>
+    
 
     <div class="row mt-5 mb-5">
+	  
       <div class="col-md-12">
+	    <div class="col-sm-2">
+          <%= link_to 'New Travel Event', new_travel_event_path, class: "btn btn-primary btn-sm"%>  
+        </div>
         <%= form_for_filterrific @filterrific do |f| %>
           <div>
-            <div class="col-sm-11">
+            <div class="col-sm-9">
             <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
             <%= f.text_field(
               :search_query,

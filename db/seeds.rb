@@ -17,14 +17,31 @@ TravelDestination.create!(address: 'Golden Gate Park', city: 'San Francisco', st
 TravelDestination.create!(address: 'Pike Place Market', city: 'Seattle', state: 'Washington')
 TravelDestination.create!(address: 'South Street Seaport', city: 'New York', state: 'New York')
 
-1.upto(20) do |i|
-TravelEvent.create(name: 'First Ever Event',
-				   description: 'This is the first event ever, guys.', 
-				   max_attendance: '1',
-				   price: 0,
-				   start: DateTime.now,
-				   travel_destination_id: 1,
-				   duration: Time.new(2002, 1, 31, 1))
+1.upto(40) do |i|
+	currentDateTime = DateTime.now
+	currentYear = currentDateTime.year
+	futureYear = currentYear.to_i + 2
+	futureDateTime = DateTime.new(futureYear)
+	eventName = 'Event ' + i.to_s
+
+	if i % 2 == 0
+		TravelEvent.create(name: eventName,
+						   description: 'This is the first event ever, guys.', 
+						   max_attendance: rand(1..100),
+						   price: rand(1..200),
+						   start: DateTime.now,
+						   travel_destination_id: 1,
+						   duration: Time.new(2002, 1, 31, 1))
+	else
+		TravelEvent.create(name: eventName,
+						   description: 'This is the first event ever, guys.', 
+						   max_attendance: rand(1..100),
+						   price: rand(1..200),
+						   start: futureDateTime,
+						   travel_destination_id: 1,
+						   duration: Time.new(2002, 1, 31, 1))
+
+	end
 end
 
 

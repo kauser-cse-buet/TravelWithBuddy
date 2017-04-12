@@ -32,18 +32,21 @@
           </div>
 
           <% @invitations.each do |invitation| %>
-            <%= fields_for 'invitation[]', invitation do |p| %>
+          <%= fields_for 'invitation[]', invitation do |p| %>
+          <% @user = User.find(invitation.user_id) %>
+          <% @active_user = User.all.where(admin_id:current_admin.id).first() %>
+          <% if @user.id != @active_user.id %>
+          <div class="row custom-table-row">
+            <div class="col-md-2">
+              <%= check_box_tag "user_ids[]", invitation.user_id %>
+            </div>
+            <div class="col-md-10">
+              <%= link_to @user.first_name + " " + @user.last_name, user_path(@user.id) %>
 
-              <div class="row custom-table-row">
-                <div class="col-md-2">
-                  <%= check_box_tag "user_ids[]", invitation.user_id %>
-                </div>
-                <div class="col-md-10">
-                  <%= User.find(invitation.user_id).first_name %>  
-                </div>
-              </div>
-
-            <% end %>
+            </div>
+          </div>
+          <% end %>
+          <% end %>
           <% end %>
 
           <div class="row custom-table-row">

@@ -13,13 +13,13 @@
     <tbody>
 
       <% @invitations.each do |invitation| %>
-      <% @user = User.all.where(id:invitation.user_id).first() %>
+      <% @user = User.find(invitation.from) %>
       <% @event = TravelEvent.all.where(id:invitation.travel_event_id).first() %>
       <tr>
         <td><%= link_to @event.name, travel_event_path(:id => invitation.travel_event_id) %>
         </td>
         <td><%= @event.description %></td>
-        <td><%= @user.first_name + " " + @user.last_name %></td>
+        <td><%= link_to @user.first_name + " " + @user.last_name, user_path(@user.id) %></td>
         <td><%= invitation.description %></td>
         <td><%= link_to 'Join', join_path(:id => invitation.travel_event_id), class: 'btn btn-sm btn-primary' %></td>
       </tr>

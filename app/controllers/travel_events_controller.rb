@@ -67,7 +67,7 @@ class TravelEventsController < ApplicationController
   def create_invitations
     @user_ids = params[:user_ids]
     @des = params[:description]
-    @from = current_admin.id
+    @from = User.all.where(admin_id:current_admin.id).first().id
     error = false
     @user_ids.each do |id|
       @invitation = Invitation.create(description: @des,from: @from, user_id: id,travel_event_id: params[:id])

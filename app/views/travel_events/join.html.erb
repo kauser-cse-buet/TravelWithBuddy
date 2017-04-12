@@ -1,9 +1,20 @@
 <%= form_tag join_event_path do %>
-<div>
-<div>Payment amount:  </div> <%= TravelEvent.find(params[:id]).price%>  
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+			<div class="panel panel-info">
+				<div class="panel-heading">
+				<h3 class="panel-title">Pay For Event</h3></br>
+				</div>
+				<div class="panel-body">
+				<div>
+				<div>Payment amount :$   <%= TravelEvent.find(params[:id]).price%> </div>
+					    <%= submit_tag 'Pay', class: "btn btn-sm btn-primary"%>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
-  <div class="actions">
-    <%= submit_tag 'Pay'%>
-  </div>
 <% end %>

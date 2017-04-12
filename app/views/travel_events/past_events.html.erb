@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
 
   <div class="row">
     
@@ -39,4 +39,53 @@
   </div>
 
 
-</div>
+</div> -->
+
+<div class="container">
+
+  <div class="row">
+
+
+    <div class="row mt-5 mb-5">
+
+      <div class="col-md-12 search-bar">
+        <%= form_for_filterrific @filterrific do |f| %>
+        <div class="col-md-9">
+          <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
+          <%= f.text_field(
+            :search_query,
+            placeholder: "Search for a past Event",
+            class: 'filterrific-periodically-observed form-control'
+              ) %>
+            </div>
+            <div class="col-md-1">
+             <%= render_filterrific_spinner %>
+           </div>
+           <% end %>
+           <div class="col-md-2 pull-right">
+             <div class="pull-right">
+
+              <%= link_to new_travel_event_path, class: "btn btn-primary" do %>
+              <i class="glyphicon glyphicon-plus"></i> New Travel Event
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-5 mb-5 search-bar">
+        <div class="col-md-12">
+          <%= render(
+            partial: 'travel_events/past_list',
+            locals: { travel_events: @travel_events }
+            ) %>    
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+

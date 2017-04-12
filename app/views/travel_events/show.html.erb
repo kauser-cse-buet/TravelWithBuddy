@@ -1,82 +1,129 @@
-<div class="container" style="border: 1px solid #5bc0de;">
-
-  <div class="row">
-    <div class="col-lg-12">
-      <h1>Name: <%= @travel_event.name %></h1>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-lg-6">
-      Max Attendance: <%= @travel_event.max_attendance %> <br/>
-      Price: <%= @travel_event.price %>
-    </div>
-    <div class="col-lg-6 text-right">
-      Start Date: <%= @travel_event.start %> <br/>
-      Duration: <%= @travel_event.duration.strftime("%H hr %M min %S sec") %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-lg-12">
-      <h3>Description: </h3><br/>
-      <%= @travel_event.description %>
-    </div>
-  </div>
-
-  <div class="row custom-table-row">
-    <div class="col-lg-12">
-      <h3>Reviews: </h3>
-    </div>
-  </div>
-
-  <% if @has_review == false %>
-    <div class="row row-padding">
-      <div class="col-lg-12">
-        <%= link_to 'Write a review', new_review_path(travel_event_id: @travel_event.id), class: "btn btn-sm btn-primary"%>
+<div class="container text-center">
+  <div class="card text-left">
+    <div class="card-header">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="card-title text-center"><%= @travel_event.name%></h1>
+        </div>
       </div>
+
+
+      <div class="row">
+        <div class="col-md-6">
+          <span class="label label-info">
+            <span class="glyphicon glyphicon-map-marker"></span>
+            <%= @travel_event.travel_destination.address%>
+          </span> 
+        </div>
+
+        <div class="col-md-6">
+          <div class="pull-right">
+            <span class="label label-default">
+              <span class="glyphicon glyphicon-time"></span>
+              Start at: <%= @travel_event.start %>   
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <span class="label label-info">
+            <span class="glyphicon glyphicon-usd"></span>
+            Cost: <%= @travel_event.price%>
+          </span> 
+        </div>
+
+        <div class="col-md-6">
+          <div class="pull-right">
+            <span class="label label-default">
+              <span class="glyphicon glyphicon-time"></span>
+              Duration: <%= @travel_event.duration.strftime("%H hr %M min %S sec") %>
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <span class="label label-info">
+            <span class="glyphicon glyphicon-usd"></span>
+            Max Attendance: <%= @travel_event.max_attendance %>
+          </span> 
+        </div>
+
+      </div>
+
+
     </div>
-  <% end %>
+    <div class="card-block">
+      <div class="row">
+        <div class="col-lg-12">
+          <p class="card-text"><%= @travel_event.description %></p>
+        </div>
+      </div>
+      <div class="custom-table-row">
+        <div class="row">
+          <div class="col-lg-10">
+            <h3>Reviews: </h3>
+          </div>
 
-  <% if @reviews.size > 0 %>
+          <% if @has_review == false %>
+          <div class="row row-padding">
+            <div class="col-lg-2">
+              <div class="pull-right">
+                <%= link_to new_review_path(travel_event_id: @travel_event.id), class: "btn btn-sm btn-default" do%>
+                  <i class="glyphicon glyphicon-plus"></i> 
+                  Write a Review
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        </div>
 
-  <table class="table">
-    <thead>
-      <tr>
-        <th></th>
-        <th>Reviewer</th>
-        <th>Rating</th>
-        <th>Review</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-    <tbody>
-    <% @reviews.each do |review| %>
-      <tr>
-        <% @reviewer = User.where(id: review.user_id).take %>
-        <td><%= image_tag(@reviewer.image_url(:thumb).to_s) %></td>
-        <% @reviewer_full_name = @reviewer.first_name + " " + @reviewer.last_name%>
-        <td><%= link_to @reviewer_full_name, user_path(review.user_id) %></td>
-        <td><%= review.rating %></td>
-        <td style="word-wrap: break-word;min-width: 200px;max-width: 200px;"><%= truncate review.description, length: 160 %></td>
-        <td>
-          <%= link_to 'Show', review_path(review), class: "btn btn-sm btn-default"%>
-          <% if review.user_id == current_admin.id%>
-          
-            <%= link_to 'Edit', edit_review_path(review), class: "btn btn-sm btn-primary"%>
-            <%= link_to 'delete', review_path(review), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-sm btn-danger" %>
-          
-          <%end%>
-        </td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+        <% if @reviews.size > 0 %>
 
-  <%end%>
+        <table class="table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Reviewer</th>
+              <th>Rating</th>
+              <th>Review</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @reviews.each do |review| %>
+            <tr>
+              <% @reviewer = User.where(id: review.user_id).take %>
+              <td><%= image_tag(@reviewer.image_url(:thumb).to_s) %></td>
+              <% @reviewer_full_name = @reviewer.first_name + " " + @reviewer.last_name%>
+              <td><%= link_to @reviewer_full_name, user_path(review.user_id) %></td>
+              <td><%= review.rating %></td>
+              <td style="word-wrap: break-word;min-width: 200px;max-width: 200px;"><%= truncate review.description, length: 160 %></td>
+              <td>
+                <%= link_to 'Show', review_path(review), class: "btn btn-sm btn-default"%>
+                <% if review.user_id == current_admin.id%>
 
-  <div class="row custom-table-row">
-    <div class="col-lg-12">
+                <%= link_to 'Edit', edit_review_path(review), class: "btn btn-sm btn-primary"%>
+                <%= link_to 'delete', review_path(review), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-sm btn-danger" %>
+
+                <%end%>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+        <%end%>
+      </div>
+      <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+    </div>
+    <div class="card-footer">
       <%= link_to 'Edit', edit_travel_event_path(@travel_event), class: "btn btn-sm btn-primary"%>
       <%= link_to 'Back', travel_events_path, class: "btn btn-sm btn-danger" %>
     </div>

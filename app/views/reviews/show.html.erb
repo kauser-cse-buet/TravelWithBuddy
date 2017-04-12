@@ -6,40 +6,43 @@
 			<div class="panel panel-info">
 				<div class="panel-heading">
 					<h3 class="panel-title">
-						Review By <%= current_admin.user.first_name%> <%= current_admin.user.last_name%>
+						Review By <%= @reviewer.first_name%> <%= @reviewer.last_name%>
 					</h3>
 				</div>
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-md-12">
-						      <div class="row custom-table-row">
-						        <div class="col-md-4">
-						          Rating:
-						        </div>
-						        <div class="col-md-8">
-						          <!-- <%= @review.rating %> -->
-						          <div id='star-rating'></div>
-						        </div>
-						      </div>
+							<div class="row custom-table-row">
+								<div class="col-md-4">
+									Rating:
+								</div>
+								<div class="col-md-8">
+									<!-- <%= @review.rating %> -->
+									<div id='star-rating'></div>
+								</div>
+							</div>
 
-						      <div class="row custom-table-row">
-						        <div class="col-md-4">
-						          Review:
-						        </div>
-						        <div class="col-md-8">
-						          <%= @review.description %>
-						        </div>
-						      </div>
+							<div class="row custom-table-row">
+								<div class="col-md-4">
+									Review:
+								</div>
+								<div class="col-md-8">
+									<%= @review.description %>
+								</div>
+							</div>
 
-						      <div class="row custom-table-row">
-						        <div class="col-md-12">
-						        	<div class="text-center">
-						        		<%= link_to 'Edit', edit_review_path(@review), class: "btn btn-sm btn-primary"%>
-						          		<%= link_to 'Back', travel_event_path(@review.travel_event_id), class: "btn btn-sm btn-danger" %>
-						          </div>
-						        </div>
-						      </div>
-						  </div>
+							<div class="row custom-table-row">
+								<div class="col-md-12">
+									<div class="text-center">
+										<%if @review.user_id == current_admin.id%>
+										
+										<%= link_to 'Edit', edit_review_path(@review), class: "btn btn-sm btn-primary"%>
+										<% end %>
+										<%= link_to 'Back', travel_event_path(@review.travel_event_id), class: "btn btn-sm btn-danger" %>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 
@@ -50,10 +53,10 @@
 
 
 <script>
-  $('#star-rating').raty({
-  	score: '<%= @review.rating%>',
-    half: true,
-	path: '/assets/',
-	readOnly: true
-  });
+	$('#star-rating').raty({
+		score: '<%= @review.rating%>',
+		half: true,
+		path: '/assets/',
+		readOnly: true
+	});
 </script>

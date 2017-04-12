@@ -11,6 +11,7 @@ class ReviewsController < ApplicationController
   # GET /reviews/1
   # GET /reviews/1.json
   def show
+    @reviewer = User.find(@review.user_id)
   end
 
   # GET /reviews/new
@@ -22,6 +23,7 @@ class ReviewsController < ApplicationController
   # GET /reviews/1/edit
   def edit
     @review = Review.find(params[:id])
+    @reviewer = User.find(@review.user_id)
   end
 
   # POST /reviews

@@ -13,7 +13,7 @@
     </div>
     <div class="col-lg-6 text-right">
       Start Date: <%= @travel_event.start %> <br/>
-      Duration: <%= @travel_event.duration %>
+      Duration: <%= @travel_event.duration.strftime("%H hr %M min %S sec") %>
     </div>
   </div>
 

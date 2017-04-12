@@ -41,9 +41,11 @@ class TravelDestinationsController < ApplicationController
         format.json { render json: @travel_destination.errors, status: :unprocessable_entity }
       end
     end
-    @picture = Picture.create(title:@address,image:params[:travel_destination][:image],travel_destination_id:@travel_destination.id)
-    if @picture.id > 0
+    if not params[:travel_destination][:image].to_s.empty?
+      @picture = Picture.create(title:@address,image:params[:travel_destination][:image],travel_destination_id:@travel_destination.id)
+      if @picture.id > 0
 
+      end
     end
   end
 

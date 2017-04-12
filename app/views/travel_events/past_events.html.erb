@@ -50,7 +50,7 @@
 
       <div class="col-md-12 search-bar">
         <%= form_for_filterrific @filterrific do |f| %>
-        <div class="col-md-9">
+        <div class="col-md-12">
           <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
           <%= f.text_field(
             :search_query,
@@ -62,14 +62,7 @@
              <%= render_filterrific_spinner %>
            </div>
            <% end %>
-           <div class="col-md-2 pull-right">
-             <div class="pull-right">
-
-              <%= link_to new_travel_event_path, class: "btn btn-primary" do %>
-              <i class="glyphicon glyphicon-plus"></i> New Travel Event
-              <% end %>
-            </div>
-          </div>
+           
         </div>
       </div>
 

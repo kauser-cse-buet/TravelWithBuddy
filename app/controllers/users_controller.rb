@@ -20,7 +20,13 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-  	@user = User.find(params[:id])
+    @user = User.find(params[:id])
+
+    if current_admin.id != @user.admin_id
+      redirect_to @user, alert: 'User cannot edit other user profile. Redirected to show page.'
+    end
+
+
   end
 
   # POST /users

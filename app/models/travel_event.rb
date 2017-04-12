@@ -71,4 +71,8 @@ class TravelEvent < ApplicationRecord
 	  ).joins(:travel_destination).references(:travel_destinations)
 	}
 	
+	scope :created_at_gte, lambda { |reference_time|
+	   where('travel_events.created_at >= ?', reference_time)
+	}
+	
 end

@@ -24,7 +24,6 @@
           <td><%= travel_event.price %></td>
           <td><%= travel_event.start %></td>
           <td><%= travel_event.duration.strftime("%H:%M:%S") %></td>
-          <td><%= link_to 'Invite', new_invitations_path(:id => travel_event.id), class: 'btn btn-sm btn-default' %></td>
           <td><%= link_to 'Show', travel_event, class: 'btn btn-sm btn-primary'%></td>
 		</tr>
 	  <% end %>

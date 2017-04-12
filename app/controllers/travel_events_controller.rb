@@ -7,9 +7,8 @@ class TravelEventsController < ApplicationController
   def index
 	
 	@filterrific = initialize_filterrific(
-      TravelEvent,
+      TravelEvent.where('travel_events.start > ?',DateTime.now.to_s(:db)),
       params[:filterrific],
-	  default_filter_params: {},
     ) or return
 	
 	@travel_events = @filterrific.find.page(params[:page])
@@ -22,7 +21,7 @@ class TravelEventsController < ApplicationController
   
   def past_events
 	@filterrific = initialize_filterrific(
-      TravelEvent,
+      TravelEvent.where('travel_events.start <= ?',DateTime.now.to_s(:db)),
       params[:filterrific],
     ) or return
 	

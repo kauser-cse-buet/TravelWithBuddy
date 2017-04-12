@@ -43,5 +43,10 @@ github integration with heroku
 - https://devcenter.heroku.com/articles/github-integration#manual-deploys
 
 
+Star rating 
+- https://www.rubyplus.com/articles/4011-Using-Star-Rating-jQuery-Plugin-Raty-with-Twitter-Bootstrap-4-in-Rails-5-Apps
+- https://github.com/wbotelhos/raty
+- http://jacob87.github.io/raty-fa/
+
 
 

@@ -17,7 +17,8 @@
 						          Rating:
 						        </div>
 						        <div class="col-md-8">
-						          <%= @review.rating %>
+						          <!-- <%= @review.rating %> -->
+						          <div id='star-rating'></div>
 						        </div>
 						      </div>
 
@@ -46,3 +47,13 @@
 		</div>
 	</div>
 </div>
+
+
+<script>
+  $('#star-rating').raty({
+  	score: '<%= @review.rating%>',
+    half: true,
+	path: '/assets/',
+	readOnly: true
+  });
+</script>

@@ -39,7 +39,7 @@ class TravelEventsController < ApplicationController
     @travel_event = TravelEvent.find(params[:id])
     @reviews = Review.where(travel_event_id: @travel_event.id)
     @users = User.all
-    @has_review = @reviews.where(user_id:current_admin.id).count > 0
+    @has_review = @reviews.where(user_id:current_admin.user.id).count > 0
   end
 
   # GET /travel_events/new
@@ -52,7 +52,7 @@ class TravelEventsController < ApplicationController
   end
 
   def invitations
-    @invitations = Invitation.all.where(user_id:current_admin.id)
+    @invitations = Invitation.all.where(user_id: current_admin.user.id)
   end
 
   def join
@@ -61,7 +61,7 @@ class TravelEventsController < ApplicationController
 
   def join_event
     @travel_event_id = params[:id]
-    Attendee.create(paid: true, user_id:current_admin.id,travel_event_id:@travel_event_id)
+    Attendee.create(paid: true, user_id:current_admin.user.id,travel_event_id:@travel_event_id)
   end
 
   def create_invitations

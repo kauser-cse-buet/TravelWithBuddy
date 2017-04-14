@@ -100,22 +100,27 @@
             <% @reviews.each do |review| %>
             <tr>
               <% @reviewer = User.where(id: review.user_id).take %>
-              <td><%= image_tag(@reviewer.image_url(:thumb).to_s) %></td>
-              <% @reviewer_full_name = @reviewer.first_name + " " + @reviewer.last_name%>
-              <td><%= link_to @reviewer_full_name, user_path(review.user_id) %></td>
-              <td>
-                <div class='star-rating' data-score= <%= review.rating %> ></div>
-              </td>
-              <td style="word-wrap: break-word;min-width: 200px;max-width: 200px;"><%= truncate review.description, length: 160 %></td>
-              <td>
-                <%= link_to 'Show', review_path(review), class: "btn btn-sm btn-default"%>
-                <% if review.user_id == current_admin.user.id%>
 
-                  <%= link_to 'Edit', edit_review_path(review), class: "btn btn-sm btn-primary"%>
-                  <%= link_to 'delete', review_path(review), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-sm btn-danger" %>
+              <% if @reviewer != nil%>
+                <td><%= image_tag(@reviewer.image_url(:thumb).to_s) %></td>
+                
 
-                <%end%>
-              </td>
+                <% @reviewer_full_name = @reviewer.first_name + " " + @reviewer.last_name%>
+                <td><%= link_to @reviewer_full_name, user_path(review.user_id) %></td>
+                <td>
+                  <div class='star-rating' data-score= <%= review.rating %> ></div>
+                </td>
+                <td style="word-wrap: break-word;min-width: 200px;max-width: 200px;"><%= truncate review.description, length: 160 %></td>
+                <td>
+                  <%= link_to 'Show', review_path(review), class: "btn btn-sm btn-default"%>
+                  <% if review.user_id == current_admin.user.id%>
+
+                    <%= link_to 'Edit', edit_review_path(review), class: "btn btn-sm btn-primary"%>
+                    <%= link_to 'delete', review_path(review), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-sm btn-danger" %>
+
+                  <%end%>
+                </td>
+              <%end %>
             </tr>
             <% end %>
           </tbody>

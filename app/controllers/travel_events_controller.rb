@@ -5,7 +5,6 @@ class TravelEventsController < ApplicationController
   # GET /travel_events
   # GET /travel_events.json
   def index
-	
 	@filterrific = initialize_filterrific(
       TravelEvent.where('travel_events.start > ?',DateTime.now.to_s(:db)),
       params[:filterrific],

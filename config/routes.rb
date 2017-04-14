@@ -10,12 +10,15 @@ Rails.application.routes.draw do
   post '/travel_events/add_review/:id', to: 'travel_events#add_review', as: 'add_review'
   get '/home', to: 'travel_events#index', as: 'home'
   get '/travel_events/past_events', to: 'travel_events#past_events', as: 'past_events'
+
   get '/users', to: 'users#index', as: 'users'
   get '/users/:id/edit', to: 'users#edit', as: 'edit_user'
   get '/users/:id', to: 'users#show', as: 'user'
   patch '/users/:id', to: 'users#update'
   put '/users/:id', to: 'users#update'
   delete '/users/:id', to: 'users#destroy'
+
+  get '/facebook_events', to: 'facebook_events#index', as: 'facebook_events'
 
   get '/reviews/new/:travel_event_id', to: 'reviews#new', as: 'new_review'
   get '/reviews', to: 'reviews#index', as: 'reviews'

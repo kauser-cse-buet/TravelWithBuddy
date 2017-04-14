@@ -1,0 +1,43 @@
+<% @travel_events = @graph.search('Travel', type: :event)%>
+<div class="container">
+    <div class="row">
+        <h1 class="text-center">Facebook Events</h1>
+    </div>
+    <% @travel_events.each do |facebook_event| %>
+        <% travel_event = @graph.get_object(facebook_event['id'])%>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-10">
+                        <h4 class="card-title"><%= travel_event['name'] %></h4>
+
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+					<span class="label label-info">
+						<span class="glyphicon glyphicon-map-marker"></span>
+                        <%= travel_event['location']%>
+					</span>
+                        <span class="label label-default ml5">
+						<span class="glyphicon glyphicon-time"></span>
+						Start at: <%= travel_event['start_time'] %>
+					</span>
+                        <span class="label label-default ml5">
+						<span class="glyphicon glyphicon-time"></span>
+						End Time: <%= travel_event['end_time'] %>
+					</span>
+
+                    </div>
+                </div>
+            </div>
+            <div class="card-block">
+                <p class="card-text">
+                    <%= travel_event['description']%>
+                </p>
+            </div>
+        </div>
+    <% end %>
+</div>

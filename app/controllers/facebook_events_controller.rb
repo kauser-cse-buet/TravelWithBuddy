@@ -1,0 +1,5 @@
+class FacebookEventsController < ApplicationController
+	def index
+		@graph = Koala::Facebook::API.new("EAACEdEose0cBAEEIeJjf7uqhNU60kIdPewRdvXZBG6T7oYpHDVbNrzzFfPE1r8DpFgMZAYCE8rSm83RMKxeTmsyAR0iT1goxZCwh26Jy0B6qHZAYHa7ZC6Rkpu8LDktXcIpKThsbZAzIXgnIatrquIiGZCMaGxBJPZBPMQVKZAuevcdQYGvCKXOzg")
+	end
+end

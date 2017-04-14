@@ -58,7 +58,17 @@ rails db:migrate
 
 
 #facebook login
+- https://github.com/plataformatec/devise/wiki/OmniAuth:-Overview
+
 rails g migration AddOmniauthToAdmins provider:string uid:string
+
+
+# facebook data show
+
+https://github.com/arsduo/koala/wiki/Graph-API
+get access token
+https://developers.facebook.com/tools/explorer/?method=GET&path=513302242147742&version=v2.8
+
 
 
 

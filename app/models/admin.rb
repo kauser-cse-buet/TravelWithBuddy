@@ -15,7 +15,14 @@
 #  last_sign_in_ip        :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  first_name             :string
+#  last_name              :string
+#  address                :string
+#  phone                  :string
+#  provider               :string
+#  uid                    :string
 #
+
 
 
 
@@ -25,6 +32,27 @@ class Admin < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
+
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |admin|
+      admin.email = auth.info.email
+      admin.password = Devise.friendly_token[0,20]
+      admin.first_name = auth.info.first_name   # assuming the admin model has a first_name
+      admin.last_name = auth.info.last_name   # assuming the admin model has a last_name
+      
+      # If you are using confirmable and the provider(s) you use validate emails,
+      # uncomment the line below to skip the confirmation emails.
+      # admin.skip_confirmation!
+    end
+  end
+
+  def self.new_with_session(params, session)
+    super.tap do |admin|
+      if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
+        admin.email = data["email"] if admin.email.blank?
+      end
+    end
+  end
 
 end

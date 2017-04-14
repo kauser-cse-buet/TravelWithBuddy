@@ -22,8 +22,8 @@
 				<% if admin_signed_in? %>
 					<li><%= link_to 'Logout', destroy_admin_session_path, method: :delete%></li>
 					<li>
-						<%= link_to user_path(current_admin.id), style: 'color: #00f !important' do%>
-							<%= image_tag User.where(admin_id: current_admin.id).take.image_url(:icon).to_s, class: "mt-8 mb-8"%>
+						<%= link_to user_path(current_admin.user.id), style: 'color: #00f !important' do%>
+
 							<%= current_admin.email %>
 						<%end%>
 							

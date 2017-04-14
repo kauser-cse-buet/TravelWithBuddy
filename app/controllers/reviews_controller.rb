@@ -17,7 +17,7 @@ class ReviewsController < ApplicationController
   # GET /reviews/new
   def new
     @review = Review.new(travel_event_id: params[:travel_event_id], 
-                         user_id:current_admin.id)
+                         user_id:current_admin.user.id)
   end
 
   # GET /reviews/1/edit
@@ -35,8 +35,8 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to travel_event_url(@travel_event_id), notice: 'Review added to event successfully.'
     else
-      flash.now[:alert] = 'Review add failed.'
-      format.html { render :new }
+      # flash.now[:alert] = 'Review add failed.'
+      format.html { render :new, alert: 'Review add failed.'}
       format.json { render json: @review.errors, status: :unprocessable_entity }
     end
 

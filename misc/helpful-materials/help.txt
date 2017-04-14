@@ -57,4 +57,9 @@ rails generate migration AddFieldToAdmins first_name:string last_name:string add
 rails db:migrate
 
 
+#facebook login
+rails g migration AddOmniauthToAdmins provider:string uid:string
+
+
+
 

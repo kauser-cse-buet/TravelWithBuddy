@@ -27,7 +27,8 @@ Rails.application.routes.draw do
   delete '/reviews/:id', to: 'reviews#destroy'
 
 
-  devise_for :admins, controllers: { registrations: "devise_override/registrations" }
+  devise_for :admins, controllers: { registrations: "devise_override/registrations", omniauth_callbacks: "devise_override/omniauth_callbacks"}
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :travel_events
   root to: "travel_events#index"

@@ -109,10 +109,10 @@
               <td style="word-wrap: break-word;min-width: 200px;max-width: 200px;"><%= truncate review.description, length: 160 %></td>
               <td>
                 <%= link_to 'Show', review_path(review), class: "btn btn-sm btn-default"%>
-                <% if review.user_id == current_admin.id%>
+                <% if review.user_id == current_admin.user.id%>
 
-                <%= link_to 'Edit', edit_review_path(review), class: "btn btn-sm btn-primary"%>
-                <%= link_to 'delete', review_path(review), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-sm btn-danger" %>
+                  <%= link_to 'Edit', edit_review_path(review), class: "btn btn-sm btn-primary"%>
+                  <%= link_to 'delete', review_path(review), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-sm btn-danger" %>
 
                 <%end%>
               </td>

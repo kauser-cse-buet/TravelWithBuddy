@@ -49,4 +49,12 @@ Star rating
 - http://jacob87.github.io/raty-fa/
 
 
+# how to add field to admins
+- http://stackoverflow.com/questions/6722094/devise-adding-first-name-to-users
+- http://jacopretorius.net/2014/03/adding-custom-fields-to-your-devise-user-model-in-rails-4.html
+
+rails generate migration AddFieldToAdmins first_name:string last_name:string address:string phone:string
+rails db:migrate
+
+
 

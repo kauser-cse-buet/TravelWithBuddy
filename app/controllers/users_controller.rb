@@ -57,6 +57,11 @@ class UsersController < ApplicationController
                image: params[:user][:image])
 	  		@admin = @user.admin
 	  		@admin.email = @user.email
+				@admin.first_name = @user.first_name
+				@admin.last_name = @user.last_name
+				@admin.address= @user.address
+				@admin.phone = @user.phone
+
 	  		if @admin.save
 	  			format.html { redirect_to @user, notice: 'User was successfully updated.' }
 	  			format.json { render :show, status: :ok, location: @user }

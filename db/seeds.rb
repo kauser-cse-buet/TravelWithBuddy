@@ -75,17 +75,16 @@
 		end
 	end
 
+	admin_ahmmed = Admin.create(first_name: 'Kauser', last_name: 'Ahmed', address: 'memphis', phone: '9013154477', email: 'mahmmed@memphis.edu', password: '123456', password_confirmation: '123456')
+	admin_isaac = Admin.create(first_name: 'Isaac', last_name: 'Roland', address: 'memphis', phone: '9013158877', email: 'iroland@memphis.edu', password: '123456', password_confirmation: '123456')
+	admin_mislam = Admin.create(first_name: 'Maminur', last_name: 'Islam', address: 'memphis', phone: '9013154467', email: 'mislam@memphis.edu', password: '123456', password_confirmation: '123456')
+	admin_milu = Admin.create(first_name: 'Milu', last_name: 'Hasan', address: 'memphis', phone: '9013154477', email: 'mhasan@memphis.edu', password: '123456', password_confirmation: '123456')
 
-	admin_ahmmed = Admin.create!(email: 'ahmmed@memphis.edu', password: '123456', password_confirmation: '123456')
-	admin_isaac = Admin.create!(email: 'isaac@memphis.edu', password: '123456', password_confirmation: '123456')
-	admin_mislam = Admin.create!(email: 'mislam@memphis.edu', password: '123456', password_confirmation: '123456')
-	admin_milu = Admin.create!(email: 'milu@memphis.edu', password: '123456', password_confirmation: '123456')
-	
-	
-	admin_ahmmed.user = User.create(first_name: 'Kauser', last_name: 'Ahmed', address: 'memphis', phone: '9013154477', email: admin_ahmmed.email)
-	admin_isaac.user = User.create(first_name: 'Isaac', last_name: 'Roland', address: 'memphis', phone: '9013158877', email: admin_isaac.email)
-	admin_mislam.user = User.create(first_name: 'Maminur', last_name: 'Islam', address: 'memphis', phone: '9013154467', email: admin_mislam.email)
-	admin_milu.user = User.create(first_name: 'Milu', last_name: 'Hasan', address: 'memphis', phone: '9013154477', email: admin_milu.email)
+
+	admin_ahmmed.user = User.create(first_name: admin_ahmmed.first_name, last_name: admin_ahmmed.last_name , address: admin_ahmmed.address, phone: admin_ahmmed.phone, email: admin_ahmmed.email)
+	admin_isaac.user = User.create(first_name: admin_isaac.first_name, last_name: admin_isaac.last_name , address: admin_isaac.address, phone: admin_isaac.phone, email: admin_isaac.email)
+	admin_milu.user = User.create(first_name: admin_milu.first_name, last_name: admin_milu.last_name , address: admin_milu.address, phone: admin_milu.phone, email: admin_milu.email)
+	admin_mislam.user = User.create(first_name: admin_mislam.first_name, last_name: admin_mislam.last_name , address: admin_mislam.address, phone: admin_mislam.phone, email: admin_mislam.email)
 
 	# admin_ahmmed.user = ahmmed
 	# admin_isaac.user = isaac

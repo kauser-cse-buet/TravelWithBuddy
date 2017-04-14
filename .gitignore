@@ -19,7 +19,6 @@
 
 # Ignore Byebug command history file.
 .byebug_history
-.idea/TravelBuddy.iml
-.idea/modules.xml
-.idea/vcs.xml
-.idea/workspace.xml
+
+.idea/
+

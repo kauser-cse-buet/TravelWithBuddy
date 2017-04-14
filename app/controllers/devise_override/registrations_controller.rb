@@ -7,6 +7,10 @@ class DeviseOverride::RegistrationsController < Devise::RegistrationsController
     if resource.save
         @user = resource.create_user
         @user.email = resource.email
+        @user.first_name = resource.first_name
+        @user.last_name = resource.last_name
+        @user.phone = resource.phone
+        @user.address = resource.address
         @user.save
 
     end
@@ -18,5 +22,16 @@ class DeviseOverride::RegistrationsController < Devise::RegistrationsController
         @user = User.where(admin_id: resource.id).take
         @user.destroy
     end
+  end
+
+
+  private
+
+  def sign_up_params
+    params.require(:admin).permit(:first_name, :last_name, :email, :phone, :address, :password, :password_confirmation)
+  end
+
+  def account_update_params
+    params.require(:admin).permit(:first_name, :last_name, :email, :phone, :address, :password, :password_confirmation, :current_password)
   end
 end

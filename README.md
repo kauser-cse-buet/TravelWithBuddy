@@ -1,6 +1,14 @@
 # TravelBuddy
 A web application for travel event management.
 
+Demo: https://calm-brushlands-22294.herokuapp.com/
+
+Currently this has two branch: 
+
+master : deployment branch. 
+development-sqlite: development branch use sqlite as database. 
+
+
 ## How to run the application locally. (in vagrant)
 - vagrant up 
 - vagrant ssh

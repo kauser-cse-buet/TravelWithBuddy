@@ -60,6 +60,14 @@ rails db:migrate
 #facebook login
 rails g migration AddOmniauthToAdmins provider:string uid:string
 
+Heroku deploy 
+- https://devcenter.heroku.com/articles/getting-started-with-rails5
+sudo apt-get install postgresql-9.3
+sudo apt-get install libpq-dev
+sudo find / -name "pg_config"
+gem install pg -- --with-pg-config=path/to/pg_config
+
+
 
 
 

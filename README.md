@@ -25,27 +25,26 @@ Currently this has two branch:
 ### How to run the application locally. (in vagrant)
 For the first time. 
 
-step - 1: bundle install
+- step - 1: bundle install
 - this will fail.
-step -2 : sudo apt-get install postgresql-9.3
-step -3 : sudo apt-get install libpq-dev
-step -4 : sudo find / -name "pg_config"
-step -5 : gem install pg -- --with-pg-config=/usr/bin/pg_config
+- step -2 : sudo apt-get install postgresql-9.3
+- step -3 : sudo apt-get install libpq-dev
+- step -4 : sudo find / -name "pg_config"
+- step -5 : gem install pg -- --with-pg-config=/usr/bin/pg_config
 
-step -6 : bundle install
+- step -6 : bundle install
+- step -7 :sudo -u postgres createuser vagrant -s
 
-step -7 :sudo -u postgres createuser vagrant -s
-
-Now go to project directory. 
+### Now go to project directory. 
 - rails db:create
 - rails db:migrate db:seed
 - rails s -b 0.0.0.0
 
-#### if this doesnot work then 
-step -8 : $ sudo -u postgres -i
+### if this doesnot work then 
+- step -8 : $ sudo -u postgres -i
 
-step -9 : postgres@host:~$ psql
-step -10 : In there: postgres=# ALTER USER vagrant CREATEDB;
+- step -9 : postgres@host:~$ psql
+- step -10 : In there: postgres=# ALTER USER vagrant CREATEDB;
 
 
 Again, go to project directory

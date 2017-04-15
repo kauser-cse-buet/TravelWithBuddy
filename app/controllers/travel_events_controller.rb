@@ -40,6 +40,7 @@ class TravelEventsController < ApplicationController
     @reviews = Review.where(travel_event_id: @travel_event.id)
     @users = User.all
     @has_review = @reviews.where(user_id:current_admin.user.id).count > 0
+    @average_rating = @reviews.average(:rating)
   end
 
   # GET /travel_events/new

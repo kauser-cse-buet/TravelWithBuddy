@@ -3,7 +3,7 @@
     <div class="card-header">
       <div class="row">
         <div class="col-md-12">
-          <h1 class="card-title text-center"><%= @travel_event.name%></h1>
+          <h1 class="card-title text-center"><%= @travel_event.name %></h1>
         </div>
       </div>
 
@@ -12,8 +12,8 @@
         <div class="col-md-6">
           <span class="label label-info">
             <span class="glyphicon glyphicon-map-marker"></span>
-            <%= @travel_event.travel_destination.address%>
-          </span> 
+            <%= @travel_event.travel_destination.address %>
+          </span>
         </div>
 
         <div class="col-md-6">
@@ -31,8 +31,8 @@
         <div class="col-md-6">
           <span class="label label-info">
             <span class="glyphicon glyphicon-usd"></span>
-            Cost: <%= @travel_event.price%>
-          </span> 
+            Cost: <%= @travel_event.price %>
+          </span>
         </div>
 
         <div class="col-md-6">
@@ -51,7 +51,7 @@
           <span class="label label-info">
             <span class="glyphicon glyphicon-user"></span>
             Max Attendance: <%= @travel_event.max_attendance %>
-          </span> 
+          </span>
         </div>
 
       </div>
@@ -64,6 +64,7 @@
           <p class="card-text"><%= @travel_event.description %></p>
         </div>
       </div>
+
       <div class="custom-table-row">
         <div class="row">
           <div class="col-lg-10">
@@ -71,67 +72,172 @@
           </div>
 
           <% if @has_review == false %>
-          <div class="row row-padding">
-            <div class="col-lg-2">
-              <div class="pull-right">
-                <%= link_to new_review_path(travel_event_id: @travel_event.id), class: "btn btn-sm btn-default" do%>
-                  <i class="glyphicon glyphicon-plus"></i> 
-                  Write a Review
-                <% end %>
+              <div class="row row-padding">
+                <div class="col-lg-2">
+                  <div class="pull-right">
+                    <%= link_to new_review_path(travel_event_id: @travel_event.id), class: "btn btn-sm btn-default" do %>
+                        <i class="glyphicon glyphicon-plus"></i>
+                        Write a Review
+                    <% end %>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
           <% end %>
         </div>
 
         <% if @reviews.size > 0 %>
+            <div class="container-fluid">
+              <div class="inner">
+                <div class="rating">
+                  <span class="rating-num"><%= @average_rating.round(2) %></span>
+                  <div class="rating-stars">
+                    <div class="star-rating-avg" data-score=<%= @average_rating %>></div>
+                  </div>
+                  <div class="rating-users">
+                    <span class="glyphicon glyphicon-user"></span>
+                      <%= @reviews.count(:all) %>
+                    total
+                  </div>
+                </div>
 
-        <table class="table">
-          <thead>
-            <tr>
-              <th></th>
-              <th>Reviewer</th>
-              <th>Rating</th>
-              <th>Review</th>
-              <th colspan="3"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @reviews.each do |review| %>
-            <tr>
-              <% @reviewer = User.where(id: review.user_id).take %>
+                <div class="histo">
+                  <div class="five histo-rate">
+                    <span class="histo-star">
+                      <i class="active glyphicon glyphicon-star"></i> 5
+                    </span>
+                    <span class="bar-block">
+                      <span id="bar-five" class="bar" data-score=<%= @reviews.where('rating > 4.5').count  %>>
+                        <%= @reviews.where('rating > 4.5').count  %>
+                      </span>
+                    </span>
+                  </div>
 
-              <% if @reviewer != nil%>
-                <td><%= image_tag(@reviewer.image_url(:thumb).to_s) %></td>
-                
+                  <div class="four histo-rate">
+                    <span class="histo-star">
+                      <i class="active glyphicon glyphicon-star"></i> 4
+                    </span>
+                    <span class="bar-block">
+                      <span id="bar-four" class="bar">
+                        <%= @reviews.where('rating >= 3.5 and rating < 4.5').count  %>
+                      </span>
+                    </span>
+                  </div>
 
-                <% @reviewer_full_name = @reviewer.first_name + " " + @reviewer.last_name%>
-                <td><%= link_to @reviewer_full_name, user_path(review.user_id) %></td>
-                <td>
-                  <div class='star-rating' data-score= <%= review.rating %> ></div>
-                </td>
-                <td style="word-wrap: break-word;min-width: 200px;max-width: 200px;"><%= truncate review.description, length: 160 %></td>
-                <td>
-                  <%= link_to 'Show', review_path(review), class: "btn btn-sm btn-default"%>
-                  <% if review.user_id == current_admin.user.id%>
+                  <div class="three histo-rate">
+                    <span class="histo-star">
+                      <i class="active glyphicon glyphicon-star"></i> 3
+                    </span>
 
-                    <%= link_to 'Edit', edit_review_path(review), class: "btn btn-sm btn-primary"%>
-                    <%= link_to 'delete', review_path(review), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-sm btn-danger" %>
+                    <span class="bar-block">
+                      <span id="bar-three" class="bar">
+                        <%= @reviews.where('rating >= 2.5 and rating < 3.5').count  %>
+                      </span>
+                    </span>
+                  </div>
 
-                  <%end%>
-                </td>
-              <%end %>
-            </tr>
-            <% end %>
-          </tbody>
-        </table>
+                  <div class="two histo-rate">
+                    <span class="histo-star">
+                      <i class="active glyphicon glyphicon-star"></i> 2
+                    </span>
+                    <span class="bar-block">
+                      <span id="bar-two" class="bar">
+                        <%= @reviews.where('rating >= 1.5 and rating < 2.5').count  %>
+                      </span>
+                    </span>
+                  </div>
 
-        <%end%>
+                  <div class="one histo-rate">
+                      <span class="histo-star">
+                        <i class="active glyphicon glyphicon-star"></i> 1
+                      </span>
+                      <span class="bar-block">
+                        <span id="bar-one" class="bar">
+                          <%= @reviews.where('rating >= 0.5 and rating < 1.5').count  %>
+                        </span>
+                      </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+              <% @reviews.each do |review| %>
+                  <% @reviewer = User.where(id: review.user_id).take %>
+
+                  <% if @reviewer != nil %>
+                    <div class="container-fluid">
+                      <div class="row">
+                        <div class="col-md-offset-2 col-md-8">
+                          <div class="card">
+                            <div class="card-header">
+                              <div class="row">
+                                <div class="col-md-8">
+                                  <div class="row">
+                                    <div class="col-md-12">
+                                      <h4 class="card-title">
+                                      <span>
+                                        <%= image_tag(@reviewer.image_url(:thumb).to_s) %>
+                                        <% @reviewer_full_name = @reviewer.first_name + " " + @reviewer.last_name %>
+                                        <%= link_to @reviewer_full_name, user_path(review.user_id) %>
+                                      </span>
+                                      </h4>
+                                    </div>
+                                  </div>
+
+                                  <div class="row">
+                                    <div class="col-md-12">
+                                      <div class='star-rating' data-score=<%= review.rating %>></div>
+                                    </div>
+                                  </div>
+
+                                </div>
+
+
+                                <div class="col-md-4 pull-right">
+                                  <div class="row pull-right">
+                                    <div class="col-md-12">
+                                      <%= link_to 'Show', review_path(review), class: "btn btn-sm btn-default" %>
+                                      <% if review.user_id == current_admin.user.id %>
+
+                                          <%= link_to edit_review_path(review), class: "btn btn-sm btn-default" do%>
+                                              <i class="glyphicon glyphicon-pencil"></i>
+                                          <% end %>
+                                          <%= link_to review_path(review), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-sm btn-danger" do%>
+                                              <i class="glyphicon glyphicon-trash"></i>
+                                          <% end %>
+
+                                      <% end %>
+
+                                    </div>
+                                  </div>
+                                </div>
+
+                              </div>
+                            </div>
+                            <div class="card-block">
+                              <p class="card-text">
+                              <div style="word-wrap: break-word;min-width: 200px;max-width: 200px;">
+                                <%= truncate review.description, length: 160 %>
+                              </div>
+                              </p>
+
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                  <% end %>
+
+              <% end %>
+
+        <% end %>
       </div>
       <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
     </div>
     <div class="card-footer">
-      <%= link_to 'Edit', edit_travel_event_path(@travel_event), class: "btn btn-sm btn-primary"%>
+      <%= link_to 'Edit', edit_travel_event_path(@travel_event), class: "btn btn-sm btn-primary" %>
       <%= link_to 'Back', travel_events_path, class: "btn btn-sm btn-danger" %>
     </div>
   </div>
@@ -139,12 +245,71 @@
 
 
 <script>
-  $('.star-rating').raty({
-      path: '/assets/',
-      readOnly: true,
-      number: 5,
-      score: function() {
-            return $(this).attr('data-score');
-    }
-  });
+	$('.star-rating').raty({
+		path: '/assets/',
+		readOnly: true,
+		number: 5,
+		score: function () {
+			return $(this).attr('data-score');
+		}
+	});
+
+	$('.star-rating').raty({
+		path: '/assets/',
+		readOnly: true,
+		number: 5,
+		score: function () {
+			return $(this).attr('data-score');
+		}
+	});
+
+	$('.star-rating-avg').raty({
+		path: '/assets/',
+		readOnly: true,
+		number: 5,
+		score: function () {
+			return $(this).attr('data-score');
+		}
+	});
+
+	$(document).ready(function() {
+		$('.bar span').hide();
+
+		fiveValue = +($('#bar-five')[0].innerText)
+		fourValue = +($('#bar-four')[0].innerText)
+		threeValue = +($('#bar-three')[0].innerText)
+		twoValue = +($('#bar-two')[0].innerText)
+		oneValue = +($('#bar-one')[0].innerText)
+        sum = fiveValue + fourValue + threeValue + twoValue + oneValue
+
+        fivePerc = (fiveValue * 100/ sum)
+		fourPerc = (fourValue * 100/ sum)
+		threePerc = (threeValue * 100/ sum)
+		twoPerc = (twoValue * 100/ sum)
+		onePerc = (oneValue * 100/ sum)
+
+        fivePerc = (fivePerc == 0) ? 5 : fivePerc
+		fourPerc = (fourPerc == 0) ? 5 : fourPerc
+		threePerc = (threePerc == 0) ? 5 : threePerc
+		twoPerc = (twoPerc == 0) ? 5 : twoPerc
+		onePerc = (onePerc == 0) ? 5 : onePerc
+
+
+
+		$('#bar-five').animate({
+			width: fivePerc + "%"}, 1000);
+		$('#bar-four').animate({
+			width: fourPerc + "%"}, 1000);
+		$('#bar-three').animate({
+			width: threePerc + "%"}, 1000);
+		$('#bar-two').animate({
+			width: twoPerc + "%"}, 1000);
+		$('#bar-one').animate({
+			width: onePerc + "%"}, 1000);
+
+		setTimeout(function() {
+			$('.bar span').fadeIn('slow');
+		}, 1000);
+
+	});
 </script>

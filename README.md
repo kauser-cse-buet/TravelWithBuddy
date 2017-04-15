@@ -51,3 +51,13 @@ Again, go to project directory
 - rake db:create
 - rake db:migrate db:seed
 - rails s -b 0.0.0.0
+
+
+##At forked branch: 
+After every commit -> push -> pull request -> merge, do the following: [to avoid commit behind]
+- 1. Add remote from original repository in your forked repository:
+
+- git remote add upstream git://github.com/ORIGINAL-DEV-USERNAME/REPO-YOU-FORKED-FROM.git
+- git fetch upstream
+- 2. Updating your fork from original repo to keep up with their changes:
+- git pull upstream master

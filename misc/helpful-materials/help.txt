@@ -65,7 +65,7 @@ Heroku deploy
 sudo apt-get install postgresql-9.3
 sudo apt-get install libpq-dev
 sudo find / -name "pg_config"
-gem install pg -- --with-pg-config=path/to/pg_config
+gem install pg -- --with-pg-config=/usr/bin/pg_config
 
 
 
@@ -77,23 +77,27 @@ gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB8
 
 #########How to run current master with postgre.#######
 
-bundle install
+step - 1: bundle install
+- this will fail.
+step -2 : sudo apt-get install postgresql-9.3
+step -3 : sudo apt-get install libpq-dev
+step -4 : sudo find / -name "pg_config"
+step -5 : gem install pg -- --with-pg-config=/usr/bin/pg_config
 
-sudo -u postgres createuser vagrant -s
+step -6 : bundle install
 
+step -7 :sudo -u postgres createuser vagrant -s
 
 Now go to project directory. 
-- rake db:create
-- rake db:migrate db:seed
+- rails db:create
+- rails db:migrate db:seed
 - rails s -b 0.0.0.0
 
 # if this doesnot work then 
-$ sudo -u postgres -i
+step -8 : $ sudo -u postgres -i
 
-postgres@host:~$ psql
-In there:
-
-postgres=# ALTER USER vagrant CREATEDB;
+step -9 : postgres@host:~$ psql
+step -10 : In there: postgres=# ALTER USER vagrant CREATEDB;
 
 
 Again, go to project directory

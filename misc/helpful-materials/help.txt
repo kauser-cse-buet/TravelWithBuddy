@@ -4,7 +4,6 @@ Styling
 User Profile Template
 - http://bootsnipp.com/snippets/featured/simple-user-profile
 
-
 command for application
 
 rails g migration AddAdminRefToUsers admin:references

@@ -104,3 +104,9 @@ Again, go to project directory
 - rake db:create
 - rake db:migrate db:seed
 - rails s -b 0.0.0.0
+
+### scaffold post
+rails generate scaffold Post content:text image:string
+rails generate migration AddUserRefToPosts user:references
+rails generate migration AddTravelEventRefToPosts travel_event:references
+

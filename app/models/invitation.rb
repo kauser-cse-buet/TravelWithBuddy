@@ -15,5 +15,6 @@
 
 
 
+
 class Invitation < ApplicationRecord
 end

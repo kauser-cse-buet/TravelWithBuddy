@@ -12,6 +12,7 @@
 #  user_id               :integer
 #
 
+
 class Picture < ApplicationRecord
   validates_presence_of :title
   mount_uploader :image, ImageUploader

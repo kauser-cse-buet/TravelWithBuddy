@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170414090336) do
+ActiveRecord::Schema.define(version: 20170416091613) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,17 @@ ActiveRecord::Schema.define(version: 20170414090336) do
     t.index ["user_id"], name: "index_pictures_on_user_id", using: :btree
   end
 
+  create_table "posts", force: :cascade do |t|
+    t.text     "content"
+    t.string   "image"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "user_id"
+    t.integer  "travel_event_id"
+    t.index ["travel_event_id"], name: "index_posts_on_travel_event_id", using: :btree
+    t.index ["user_id"], name: "index_posts_on_user_id", using: :btree
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.decimal  "rating"
     t.string   "description"
@@ -126,6 +137,8 @@ ActiveRecord::Schema.define(version: 20170414090336) do
   add_foreign_key "pictures", "reviews"
   add_foreign_key "pictures", "travel_destinations"
   add_foreign_key "pictures", "users"
+  add_foreign_key "posts", "travel_events"
+  add_foreign_key "posts", "users"
   add_foreign_key "reviews", "travel_events"
   add_foreign_key "reviews", "users"
   add_foreign_key "travel_events", "travel_destinations"

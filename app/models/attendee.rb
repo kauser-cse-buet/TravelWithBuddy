@@ -13,5 +13,6 @@
 
 
 
+
 class Attendee < ApplicationRecord
 end

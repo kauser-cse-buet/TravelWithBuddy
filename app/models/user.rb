@@ -17,8 +17,10 @@
 
 
 
+
 class User < ApplicationRecord
 	belongs_to :admin
-	has_many :reviews
+	has_many :reviews, :dependent => :destroy
+	has_many :posts, :dependent => :destroy
 	mount_uploader :image, ImageUploader
 end

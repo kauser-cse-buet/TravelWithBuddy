@@ -19,6 +19,8 @@
 
 
 
+
+
 class TravelEvent < ApplicationRecord
 	
 	filterrific :available_filters => %w[
@@ -28,7 +30,8 @@ class TravelEvent < ApplicationRecord
 	self.per_page = 10
 	  
 	belongs_to :travel_destination, :foreign_key => 'travel_destination_id'
-	has_many :reviews
+	has_many :reviews, :dependent => :destroy
+	has_many :posts, :dependent => :destroy
 	
 	scope :start_gte, lambda { |reference_dt|
 		where('travel_events.start >= ?', reference_dt)

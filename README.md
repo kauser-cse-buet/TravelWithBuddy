@@ -48,8 +48,8 @@ For the first time.
 
 
 Again, go to project directory
-- rake db:create
-- rake db:migrate db:seed
+- rails db:create
+- rails db:migrate db:seed
 - rails s -b 0.0.0.0
 
 

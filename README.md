@@ -1,7 +1,7 @@
 # TravelBuddy
 A web application for travel event management.
 
-Demo: https://calm-brushlands-22294.herokuapp.com/
+Demo: https://travel-with-buddy.herokuapp.com/
 
 Currently this has two branch: 
 

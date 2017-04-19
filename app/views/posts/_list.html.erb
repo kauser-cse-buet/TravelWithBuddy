@@ -81,7 +81,7 @@
             )
           </div>
         </div>
-        <%= will_paginate @posts_paginated%>
+        <%= will_paginate @posts_paginated, param_name: 'posts_page', container: 'post-section'%>
       </div>
     </div>
   </div>

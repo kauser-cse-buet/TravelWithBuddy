@@ -22,7 +22,9 @@
 
                   <div class="row">
                     <div class="col-md-12">
-                      <%= post.created_at %>
+                      <div class="text-subtitle">
+                        <%= post.created_at %>
+                      </div>
                     </div>
                   </div>
 
@@ -35,10 +37,10 @@
                       <%= link_to 'Show', post_path(post), class: "btn btn-sm btn-default" %>
                       <% if post.user_id == current_admin.user.id %>
 
-                          <%= link_to edit_post_path(post), class: "btn btn-sm btn-default" do%>
+                          <%= link_to edit_post_path(post), class: "btn btn-sm btn-default" do %>
                               <i class="glyphicon glyphicon-pencil"></i>
                           <% end %>
-                          <%= link_to post_path(post), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-sm btn-danger" do%>
+                          <%= link_to post_path(post), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-sm btn-danger" do %>
                               <i class="glyphicon glyphicon-trash"></i>
                           <% end %>
 
@@ -56,6 +58,10 @@
                 <%= truncate post.content, length: 160 %>
               </div>
               </p>
+
+              <div class="text-center">
+                <%= image_tag(post.image_url(:normal).to_s) %>
+              </div>
 
             </div>
           </div>

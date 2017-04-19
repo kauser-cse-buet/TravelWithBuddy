@@ -81,7 +81,7 @@
             )
           </div>
         </div>
-        <%= will_paginate @posts_paginated %>
+        <%= will_paginate @posts_paginated, reorder: "date DESC" %>
       </div>
     </div>
   </div>

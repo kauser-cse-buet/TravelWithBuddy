@@ -40,8 +40,8 @@ class TravelEventsController < ApplicationController
     @reviews = Review.where(travel_event_id: @travel_event.id)
     @posts = Post.where(travel_event_id: @travel_event.id)
 
-    @reviews_paginated = @reviews.paginate(:page => params[:page], :per_page => 4)
-    @posts_paginated = @posts.paginate(:page => params[:page], :per_page => 4)
+    @reviews_paginated = @reviews.paginate(:page => params[:page], :per_page => 4).order('created_at DESC')
+    @posts_paginated = @posts.paginate(:page => params[:page], :per_page => 4).order('created_at DESC')
 
     @users = User.all
     @has_review = @reviews.where(user_id:current_admin.user.id).count > 0

@@ -16,10 +16,7 @@ class PostsController < ApplicationController
   def new
     @post = Post.new(travel_event_id: params[:travel_event_id],
                      user_id:current_admin.user.id)
-    respond_to do |format|
-      format.html
-      format.js
-    end
+
   end
 
   # GET /posts/1/edit
@@ -36,7 +33,7 @@ class PostsController < ApplicationController
         format.html { redirect_to  travel_event_url(post_params[:travel_event_id]), notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else
-        format.html { render :new_modal }
+        format.html { render :new }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
@@ -59,9 +56,11 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
+    @travel_event_id = @post.travel_event_id
     @post.destroy
+
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+      format.html { redirect_to travel_event_url(@travel_event_id), notice: 'Post was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170416091613) do
+ActiveRecord::Schema.define(version: 20170419140333) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(version: 20170416091613) do
     t.datetime "updated_at",            null: false
     t.integer  "travel_destination_id"
     t.integer  "user_id"
+    t.string   "image"
     t.index ["travel_destination_id"], name: "index_travel_events_on_travel_destination_id"
     t.index ["user_id"], name: "index_travel_events_on_user_id"
   end

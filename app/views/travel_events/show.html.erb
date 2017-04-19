@@ -1,6 +1,9 @@
 <div class="container text-center">
   <div class="card text-left">
     <div class="card-header">
+      <div class="text-center mt8 mb8">
+        <%= image_tag @travel_event.image_url(:cover_photo).to_s, style: "width: 100%; height: 400px"%>
+      </div>
       <div class="row">
         <div class="col-md-12">
           <h1 class="card-title text-center"><%= @travel_event.name %></h1>
@@ -68,7 +71,7 @@
       <div>
         <%= render(
                 partial: 'travel_events/navigation',
-                locals: { reviews: @reviews,  has_review: @has_review, average_rating: @average_rating, posts: @posts, posts_paginated: @posts_paginated , reviews_paginated: @reviews_paginated}
+                locals: {reviews: @reviews, has_review: @has_review, average_rating: @average_rating, posts: @posts, posts_paginated: @posts_paginated, reviews_paginated: @reviews_paginated}
             ) %>
       </div>
 

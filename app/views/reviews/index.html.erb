@@ -29,3 +29,9 @@
 <br>
 
 <%= link_to 'New Review', new_review_path(1) %>
+
+
+<%= render(
+        partial: 'reviews/list',
+        locals: { reviews: @reviews_paginated }
+    ) %>

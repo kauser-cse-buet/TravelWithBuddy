@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
-  resources :posts
+  resources :posts, only: [:index, :create, :edit, :show, :update, :destroy]
   resources :pictures
   resources :travel_destinations
+
+  get '/posts/new/:travel_event_id', to: 'posts#new', as: 'new_post'
   get '/travel_events/:id/inviation', to: 'travel_events#new_invitations', as: 'new_invitations'
   post '/travel_events/:id/inviation', to: 'travel_events#create_invitations', as: 'create_invitations'
   get '/travel_events/inviations', to: 'travel_events#invitations', as: 'invitations'

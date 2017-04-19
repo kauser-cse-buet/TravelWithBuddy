@@ -14,7 +14,12 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
-    @post = Post.new
+    @post = Post.new(travel_event_id: params[:travel_event_id],
+                     user_id:current_admin.user.id)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /posts/1/edit
@@ -28,10 +33,10 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.html { redirect_to  travel_event_url(post_params[:travel_event_id]), notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else
-        format.html { render :new }
+        format.html { render :new_modal }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
@@ -69,6 +74,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:content, :image)
+      params.require(:post).permit(:content, :image, :travel_event_id, :user_id)
     end
 end

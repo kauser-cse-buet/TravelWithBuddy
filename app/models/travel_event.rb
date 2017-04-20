@@ -78,5 +78,7 @@ class TravelEvent < ApplicationRecord
 	scope :created_at_gte, lambda { |reference_time|
 	   where('travel_events.created_at >= ?', reference_time)
 	}
+
+	mount_uploader :image, ImageUploader
 	
 end

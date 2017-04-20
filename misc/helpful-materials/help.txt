@@ -4,7 +4,6 @@ Styling
 User Profile Template
 - http://bootsnipp.com/snippets/featured/simple-user-profile
 
-
 command for application
 
 rails g migration AddAdminRefToUsers admin:references
@@ -109,4 +108,8 @@ Again, go to project directory
 rails generate scaffold Post content:text image:string
 rails generate migration AddUserRefToPosts user:references
 rails generate migration AddTravelEventRefToPosts travel_event:references
+
+
+
+rails g migration AddImageToTravelEvents image:string
 

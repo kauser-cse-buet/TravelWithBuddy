@@ -113,3 +113,11 @@ rails generate migration AddTravelEventRefToPosts travel_event:references
 
 rails g migration AddImageToTravelEvents image:string
 
+
+
+## heroku reset database
+heroku login
+heroku pg:reset DATABASE --app travel-with-buddy
+
+
+

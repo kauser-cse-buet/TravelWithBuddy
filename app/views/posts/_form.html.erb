@@ -1,6 +1,6 @@
 <% @poster = User.where(id: post.user_id).take %>
 
-<%= form_for post, remote: true, authenticity_token: true do |f| %>
+<%= form_for post, remote: true, authenticity_token: true, html: {id: "post_form"} do |f| %>
 
     <% if @poster != nil %>
         <div class="container-fluid">

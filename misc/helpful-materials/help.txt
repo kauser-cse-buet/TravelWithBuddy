@@ -120,4 +120,5 @@ heroku login
 heroku pg:reset DATABASE --app travel-with-buddy
 
 
-
+timeline viewer
+http://bootsnipp.com/snippets/W7X6X

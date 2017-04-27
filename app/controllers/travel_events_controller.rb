@@ -49,6 +49,12 @@ class TravelEventsController < ApplicationController
 
 		@post = Post.new(travel_event_id: @travel_event.id,
 						 user_id: current_admin.user.id)
+
+		@five_star_count = @reviews.where('rating > 4.5').count
+		@four_star_count = @reviews.where('rating < 4.5 and rating >= 3.5').count
+		@three_star_count = @reviews.where('rating < 3.5 and rating >= 2.5').count
+		@two_star_count = @reviews.where('rating < 2.5 and rating >= 1.5').count
+		@one_star_count = @reviews.where('rating < 1.5 and rating >= 0.5').count
 	end
 
 	# GET /travel_events/new

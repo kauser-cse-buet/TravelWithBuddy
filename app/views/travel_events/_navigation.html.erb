@@ -56,7 +56,7 @@
                 </span>
                     <span class="bar-block">
                   <span id="bar-five" class="bar" data-score=<%= @reviews.where('rating > 4.5').count %>>
-                    <%= @reviews.where('rating > 4.5').count %>
+                    <%= @five_star_count %>
                   </span>
                 </span>
                   </div>
@@ -67,7 +67,7 @@
                 </span>
                     <span class="bar-block">
                   <span id="bar-four" class="bar">
-                    <%= @reviews.where('rating >= 3.5 and rating < 4.5').count %>
+                    <%= @four_star_count %>
                   </span>
                 </span>
                   </div>
@@ -79,7 +79,7 @@
 
                     <span class="bar-block">
                   <span id="bar-three" class="bar">
-                    <%= @reviews.where('rating >= 2.5 and rating < 3.5').count %>
+                    <%= @three_star_count %>
                   </span>
                 </span>
                   </div>
@@ -90,7 +90,7 @@
                 </span>
                     <span class="bar-block">
                   <span id="bar-two" class="bar">
-                    <%= @reviews.where('rating >= 1.5 and rating < 2.5').count %>
+                    <%= @two_star_count %>
                   </span>
                 </span>
                   </div>
@@ -101,7 +101,7 @@
                   </span>
                     <span class="bar-block">
                     <span id="bar-one" class="bar">
-                      <%= @reviews.where('rating >= 0.5 and rating < 1.5').count %>
+                      <%= @one_star_count %>
                     </span>
                   </span>
                   </div>
@@ -132,10 +132,10 @@
 
 
 
-        <%= render(
-                partial: 'posts/list',
-                locals: {posts: @posts}
-            ) %>
+    <%= render(
+            partial: 'posts/list',
+            locals: {posts: @posts}
+        ) %>
 
 
   </div>

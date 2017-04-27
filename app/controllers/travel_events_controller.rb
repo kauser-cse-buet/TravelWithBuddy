@@ -48,7 +48,7 @@ class TravelEventsController < ApplicationController
 		@average_rating = @reviews.average(:rating)
 
 		@post = Post.new(travel_event_id: @travel_event.id,
-						 user_id: current_admin.id)
+						 user_id: current_admin.user.id)
 	end
 
 	# GET /travel_events/new

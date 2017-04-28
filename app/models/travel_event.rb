@@ -32,6 +32,7 @@ class TravelEvent < ApplicationRecord
 	belongs_to :travel_destination, :foreign_key => 'travel_destination_id'
 	has_many :reviews, :dependent => :destroy
 	has_many :posts, :dependent => :destroy
+	has_many :attendees, :dependent => :destroy
 	
 	scope :start_gte, lambda { |reference_dt|
 		where('travel_events.start >= ?', reference_dt)

@@ -29,6 +29,7 @@
 
 
 
+
 class Admin < ApplicationRecord
 	has_one :user, :dependent => :destroy
   # Include default devise modules. Others available are:

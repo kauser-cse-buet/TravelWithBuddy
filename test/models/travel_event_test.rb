@@ -13,7 +13,9 @@
 #  updated_at            :datetime         not null
 #  travel_destination_id :integer
 #  user_id               :integer
+#  image                 :string
 #
+
 
 
 

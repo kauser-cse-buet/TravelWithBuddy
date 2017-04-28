@@ -5,6 +5,7 @@ class TravelEventsController < ApplicationController
 	# GET /travel_events
 	# GET /travel_events.json
 	def index
+		@upcoming_travel_events = TravelEvent.where('travel_events.start > ?', DateTime.now.to_s(:db))
 
 		@filterrific = initialize_filterrific(
 			TravelEvent.where('travel_events.start > ?', DateTime.now.to_s(:db)),
@@ -12,6 +13,8 @@ class TravelEventsController < ApplicationController
 		) or return
 
 		@travel_events = @filterrific.find.page(params[:page])
+
+		@upcoming_travel_events_with_image = @upcoming_travel_events.where.not(image: [nil, ''])
 
 		respond_to do |format|
 			format.html

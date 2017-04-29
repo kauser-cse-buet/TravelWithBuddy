@@ -6,7 +6,7 @@ Demo: https://travel-with-buddy.herokuapp.com/
 Currently this has two branch: 
 
 - master : deployment branch (Use postgresql as database).
-- development-sqlite: development branch (use sqlite as database).
+- development-04162017: development branch (use sqlite as database).
 
 
 ## Development branch:

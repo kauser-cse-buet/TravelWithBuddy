@@ -56,12 +56,15 @@
                   </span>
                 </div>
 
-                <div class="row text-center mt8 mb8">
-                  <%= link_to new_invitations_path(:id => travel_event.id), class: 'btn btn-md btn-primary' do%>
-                    <i class="glyphicon glyphicon-envelope"></i>
-                      Invite
-                  <% end %>
-                </div>
+                <% if travel_event.attendees.count < travel_event.max_attendance %>
+
+                  <div class="row text-center mt8 mb8">
+                    <%= link_to new_invitations_path(:id => travel_event.id), class: 'btn btn-md btn-primary' do%>
+                      <i class="glyphicon glyphicon-envelope"></i>
+                        Invite
+                    <% end %>
+                  </div>
+                <% end %>
 
               </div>
 

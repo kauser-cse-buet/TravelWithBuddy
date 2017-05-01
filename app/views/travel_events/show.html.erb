@@ -62,42 +62,51 @@
 
       </div>
       <div class="card-block">
-        <div class="row">
+        <% if @travel_event.attendees.count > 0 %>
+            <div class="row">
+              <div class="col-lg-12 text-center">
+                <h5>
+                  <span>
+                    <i class="glyphicon glyphicon-user"></i>
+                    <strong><%= @travel_event.attendees.count%> joined.</strong>
+                  </span>
+                </h5>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-12 text-center">
+                <% @travel_event.attendees.each_with_index do |attendee, ind|%>
+                    <% @user = User.find(attendee.user_id) %>
+                    <%= link_to @user.first_name + " " + @user.last_name, user_path(@user.id) %>
+
+                    <% if ind < @travel_event.attendees.count - 1 %>
+                        |
+                    <% end %>
+                <% end %>
+                <div>
+                  <div class="progress">
+                    <% @people_attended_percentage = @travel_event.attendees.count * 100/ @travel_event.max_attendance %>
+                    <% @progress_bar_type =  @people_attended_percentage < 80 ? "progress-bar-success": "progress-bar-danger" %>
+                    <div class="progress-bar <%= @progress_bar_type%> progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: <%= @people_attended_percentage%>%">
+                      <%= @people_attended_percentage%>%
+                    </div>
+                  </div>
+                </div>
+                <div class="custom-table-row">
+                </div>
+
+              </div>
+            </div>
+        <% end %>
+
+
+        <div class="row ">
           <div class="col-lg-12">
+            <h4>Details</h4>
             <p class="card-text"><%= @travel_event.description %></p>
           </div>
         </div>
-      </div>
-
-    <div>
-      <% if @travel_event.attendees.count > 0 %>
-        <div class="container" style="width: 100%">
-          <h2>Attendees</h2>
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Email</th>
-                <th>Name</th>
-                <th>Address</th>
-                <th>Phone</th>
-              </tr>
-            </thead>
-            <tbody>
-
-              <% @travel_event.attendees.each do |attendee| %>
-              <% @user = User.find(attendee.user_id) %>
-              <tr>
-                <td><%= link_to @user.email, user_path(@user.id) %></td>
-                <td><%= @user.first_name + " " + @user.last_name %></td>
-                <td><%= @user.address %></td>
-                <td><%= @user.phone %></td>
-              </tr>
-            <% end %>
-            </tbody>
-          </table>
-        </div>
-
-      <% end %>
       </div>
 
   <div>

@@ -34,6 +34,7 @@ class TravelEvent < ApplicationRecord
 	belongs_to :travel_destination, :foreign_key => 'travel_destination_id'
 	has_many :reviews, :dependent => :destroy
 	has_many :posts, :dependent => :destroy
+	has_many :attendees, :dependent => :destroy
 	
 	scope :start_gte, lambda { |reference_dt|
 		where('travel_events.start >= ?', reference_dt)
@@ -82,5 +83,11 @@ class TravelEvent < ApplicationRecord
 	}
 
 	mount_uploader :image, ImageUploader
-	
+
+
+
+	validates :name, length: {maximum: 50}, presence: true
+	validates :description, length: {maximum: 500}, presence: true
+	validates :max_attendance, presence: true,inclusion: {in: 1..200}
+	validates :price, numericality: {greater_than_or_equal_to: 0}, presence: true
 end

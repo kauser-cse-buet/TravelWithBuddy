@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   post '/travel_events/:id/inviation', to: 'travel_events#create_invitations', as: 'create_invitations'
   get '/travel_events/inviations', to: 'travel_events#invitations', as: 'invitations'
   get '/travel_events/join/:id', to: 'travel_events#join', as: 'join'
-  post '/travel_events/join_event', to: 'travel_events#join_event', as: 'join_event'
+  post '/travel_events/join/:id', to: 'travel_events#join_event', as: 'join_event'
   post '/travel_events/add_review/:id', to: 'travel_events#add_review', as: 'add_review'
   get '/home', to: 'travel_events#index', as: 'home'
   get '/travel_events/past_events', to: 'travel_events#past_events', as: 'past_events'

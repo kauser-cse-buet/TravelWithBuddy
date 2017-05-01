@@ -79,8 +79,24 @@ class TravelEventsController < ApplicationController
 
 	def join_event
 		@travel_event_id = params[:id]
-		Attendee.create(paid: true, user_id: current_admin.user.id, travel_event_id: @travel_event_id)
+		@travel_event = TravelEvent.find(@travel_event_id)
+		@user = User.all.where(admin_id: current_admin.id).first()
+		if @travel_event.attendees.where(user_id: @user.id).count > 0
+			redirect_to travel_event_url(@travel_event), notice: 'You already had joined the event!' and return
+		end
+		if @travel_event.attendees.count < @travel_event.max_attendance
+			@attendee = Attendee.create(paid: true, user_id: @user.id, travel_event_id: @travel_event_id)
+			if @attendee.id
+				redirect_to travel_event_url(@travel_event), notice: 'You joined the event successfully.'
+			else
+				redirect_to travel_event_url(@travel_event), notice: 'Error in joining event'
+			end
+		else
+			redirect_to travel_event_url(@travel_event), notice: 'Event already has max attendee!'
+		end
+
 	end
+
 
 	def create_invitations
 		@user_ids = params[:user_ids]

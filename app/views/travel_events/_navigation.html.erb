@@ -17,13 +17,11 @@
         <% if @has_review == false %>
             <div class="row-padding">
 
-              <div class="pull-right">
-                <div class="text-center pt10">
-                  <%= link_to new_review_path(travel_event_id: @travel_event.id), class: "btn btn-sm btn-default" do %>
-                      <i class="glyphicon glyphicon-plus"></i>
-                      Write a Review
-                  <% end %>
-                </div>
+              <div class="text-center">
+                <%= link_to new_review_path(travel_event_id: @travel_event.id), class: "btn btn-sm btn-default" do %>
+                    <i class="glyphicon glyphicon-plus"></i>
+                    Write a Review
+                <% end %>
               </div>
 
             </div>

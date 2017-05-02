@@ -18,6 +18,7 @@
 
 
 
+
 	#validates :name, length: {maximum: 50}, uniqueness: true, presence: true
 	#validates :description, length: {maximum: 500}, presence: true
 	#validates :max_attendance, presence: true,inclusion: {in: 1..200}

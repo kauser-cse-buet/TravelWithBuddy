@@ -19,9 +19,11 @@
 
 
 
+
 class User < ApplicationRecord
 	belongs_to :admin
 	has_many :reviews, :dependent => :destroy
 	has_many :posts, :dependent => :destroy
+	has_many :travel_events, :dependent => :destroy
 	mount_uploader :image, ImageUploader
 end

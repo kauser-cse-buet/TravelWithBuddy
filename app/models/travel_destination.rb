@@ -12,5 +12,6 @@
 
 
 
+
 class TravelDestination < ApplicationRecord
 end

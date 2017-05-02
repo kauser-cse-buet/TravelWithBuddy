@@ -12,6 +12,7 @@
 
 
 
+
 require 'test_helper'
 
 class TravelDestinationTest < ActiveSupport::TestCase

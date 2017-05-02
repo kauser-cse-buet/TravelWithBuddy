@@ -15,6 +15,7 @@
 
 
 
+
 class Attendee < ApplicationRecord
 		belongs_to :travel_event, optional: false
 end

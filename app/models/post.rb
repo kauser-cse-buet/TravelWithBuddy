@@ -12,6 +12,7 @@
 #
 
 
+
 class Post < ApplicationRecord
 	belongs_to :travel_event
 	belongs_to :user

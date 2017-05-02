@@ -120,7 +120,9 @@
         <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
       </div>
       <div class="card-footer">
-        <%= link_to 'Edit', edit_travel_event_path(@travel_event), class: "btn btn-sm btn-primary" %>
+        <% if @travel_event.user_id == current_admin.user.id %>
+            <%= link_to 'Edit', edit_travel_event_path(@travel_event), class: "btn btn-sm btn-primary" %>
+        <% end %>
         <%= link_to 'Back', travel_events_path, class: "btn btn-sm btn-danger" %>
       </div>
     </div>

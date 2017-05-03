@@ -1,70 +1,60 @@
-  <div class="container text-center">
-    <div class="card text-left">
-      <div class="card-header">
-        <div class="text-center mt8 mb8">
-          <%= image_tag @travel_event.image_url(:cover_photo).to_s, class: "travel-event-list-image"%>
-        </div>
+  <div class="container">
+    <div class="card">
+      <div class="custom-card-header">
         <div class="row">
-          <div class="col-md-12">
+          <div>
+            <%= image_tag @travel_event.image_url(:cover_photo).to_s, class: "travel-event-list-image card-img-top"%>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-3">
+            <div class="row pl8">
+              <time datetime="2014-09-20" class="icon">
+                <em><%= @travel_event.start.strftime("%a %I:%M:%S %P") %></em>
+
+                <strong>
+                  <%= @travel_event.start.strftime("%b, %Y") %>
+                </strong>
+                <span>20</span>
+              </time>
+            </div>
+            <div class="row pl16 pt8">
+              <span class="label label-warning">
+                <i class="glyphicon glyphicon-time"></i>
+                Duration: <%= @travel_event.duration.strftime("%H hr %M min %S sec") %>
+              </span>
+            </div>
+          </div>
+          <div class="col-md-9">
             <h1 class="card-title text-center"><%= @travel_event.name %></h1>
             <p class="text-muted text-center">
               <i class="glyphicon glyphicon-user"></i>
               Hosted by <%= link_to @travel_event.user.first_name + " " + @travel_event.user.last_name, user_path(@travel_event.user.id) %>
             </p>
-          </div>
-        </div>
-
-
-        <div class="row">
-          <div class="col-md-6">
-            <span class="label label-info">
-              <span class="glyphicon glyphicon-map-marker"></span>
-              <%= @travel_event.travel_destination.address %>
-            </span>
-          </div>
-
-          <div class="col-md-6">
-            <div class="pull-right">
-              <span class="label label-default">
-                <span class="glyphicon glyphicon-time"></span>
-                Start at: <%= @travel_event.start %>   
+            <p class="text-center">
+              <span class="label label-info">
+                <span class="glyphicon glyphicon-map-marker"></span>
+                <%= @travel_event.travel_destination.address %>
+              </span> |
+              <span class="label label-info">
+                <span class="glyphicon glyphicon-user"></span>
+                Max Attendance: <%= @travel_event.max_attendance %>
+              </span> |
+              <span class="label label-info">
+                <span class="glyphicon glyphicon-usd"></span>
+                Cost: <%= @travel_event.price %>
               </span>
-            </div>
+
+            </p>
           </div>
-
-        </div>
-
-        <div class="row">
-          <div class="col-md-6">
-            <span class="label label-info">
-              <span class="glyphicon glyphicon-usd"></span>
-              Cost: <%= @travel_event.price %>
-            </span>
-          </div>
-
-          <div class="col-md-6">
-            <div class="pull-right">
-              <span class="label label-default">
-                <span class="glyphicon glyphicon-time"></span>
-                Duration: <%= @travel_event.duration.strftime("%H hr %M min %S sec") %>
-              </span>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="row">
-          <div class="col-md-6">
-            <span class="label label-info">
-              <span class="glyphicon glyphicon-user"></span>
-              Max Attendance: <%= @travel_event.max_attendance %>
-            </span>
-          </div>
-
         </div>
 
 
       </div>
+
+
+
       <div class="card-block">
         <% if @travel_event.attendees.count > 0 %>
             <div class="row">
@@ -130,6 +120,7 @@
         <%= link_to 'Back', travel_events_path, class: "btn btn-sm btn-danger" %>
       </div>
     </div>
+
   </div>
 
 

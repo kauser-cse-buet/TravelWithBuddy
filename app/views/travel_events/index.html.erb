@@ -15,7 +15,7 @@
               <% @upcoming_travel_events_with_image.each_with_index do |event, i| %>
                   <div class="item <%= 'active' if i == 0%>">
                     <div class="item peopleCarouselImg">
-                      <%= image_tag(event.image_url.to_s,  class: 'fill img-responsive peopleCarouselImg') %>
+                      <%= image_tag(event.image_url.to_s, size: '500x100', class: 'fill img-responsive peopleCarouselImg') %>
                     </div>
 
                     <div class="carousel-caption">

@@ -19,4 +19,10 @@
 
 
 class Invitation < ApplicationRecord
+
+	validates :from, presence: true, allow_blank: false
+	validates :description, presence: true, allow_blank: false
+	validates :user_id, presence: true
+	validates :travel_event_id, presence: true
+
 end

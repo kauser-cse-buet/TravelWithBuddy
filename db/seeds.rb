@@ -48,10 +48,10 @@
 
 
 
-	admin_ahmmed = Admin.create(first_name: 'Kauser', last_name: 'Ahmmed', address: 'memphis', phone: '9013154477', email: 'mahmmed@memphis.edu', password: '123456', password_confirmation: '123456')
-	admin_isaac = Admin.create(first_name: 'Isaac', last_name: 'Roland', address: 'memphis', phone: '9013158877', email: 'iroland@memphis.edu', password: '123456', password_confirmation: '123456')
-	admin_mislam = Admin.create(first_name: 'Maminur', last_name: 'Islam', address: 'memphis', phone: '9013154467', email: 'mislam@memphis.edu', password: '123456', password_confirmation: '123456')
-	admin_milu = Admin.create(first_name: 'Milu', last_name: 'Hasan', address: 'memphis', phone: '9013154477', email: 'mhasan@memphis.edu', password: '123456', password_confirmation: '123456')
+	admin_ahmmed = Admin.create(first_name: 'Kauser', last_name: 'Ahmmed', address: 'memphis', phone: '901-315-4477', email: 'mahmmed@memphis.edu', password: '123456', password_confirmation: '123456')
+	admin_isaac = Admin.create(first_name: 'Isaac', last_name: 'Roland', address: 'memphis', phone: '901-315-8877', email: 'iroland@memphis.edu', password: '123456', password_confirmation: '123456')
+	admin_mislam = Admin.create(first_name: 'Maminur', last_name: 'Islam', address: 'memphis', phone: '901-315-4467', email: 'mislam@memphis.edu', password: '123456', password_confirmation: '123456')
+	admin_milu = Admin.create(first_name: 'Milu', last_name: 'Hasan', address: 'memphis', phone: '901-315-4477', email: 'mhasan@memphis.edu', password: '123456', password_confirmation: '123456')
 
 
 	admin_ahmmed.user = User.create(first_name: admin_ahmmed.first_name, last_name: admin_ahmmed.last_name , address: admin_ahmmed.address, phone: admin_ahmmed.phone, email: admin_ahmmed.email)

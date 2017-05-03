@@ -14,4 +14,5 @@
 
 
 class TravelDestination < ApplicationRecord
+	has_many :travel_events
 end

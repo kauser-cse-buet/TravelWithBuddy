@@ -35,6 +35,14 @@
                     <%= travel_event.travel_destination.address %>
                   </span>
                 </div>
+				
+				<div class="row text-center mt8 mb8">
+                  <span>
+                    <i class="glyphicon glyphicon-thumbs-up"></i>
+                    Destination Rating: <div class='star-rating' data-score=<%= travel_event.average_rating %>></div>
+                  </span>
+                </div>
+				
                 <div class="row text-center mt8 mb8">
                   <span>
                     <i class="glyphicon glyphicon-time"></i>
@@ -79,3 +87,13 @@
 	</div>
 </div>
 
+<script>
+	$('.star-rating').raty({
+		path: '/assets/',
+		readOnly: true,
+		number: 5,
+		score: function () {
+			return $(this).attr('data-score');
+		}
+	});
+</script>

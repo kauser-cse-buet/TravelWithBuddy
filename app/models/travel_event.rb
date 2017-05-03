@@ -86,7 +86,27 @@ class TravelEvent < ApplicationRecord
 
 	mount_uploader :image, ImageUploader
 
-
+	def average_rating
+		
+		count = 0
+		rating_sum = 0
+		
+		self.travel_destination.travel_events.each do |travel_event|
+			if travel_event.reviews.size > 0
+				rating_sum += travel_event.reviews.average(:rating)
+				count += 1
+			end
+		end
+		
+		Rails.logger.debug "#{count}"
+		Rails.logger.debug "#{rating_sum}"
+		
+		if count > 0
+			return (rating_sum / count)
+		else
+			return 0
+		end
+	end
 
 	validates :name, length: {maximum: 50}, presence: true
 	validates :description, length: {maximum: 500}, presence: true

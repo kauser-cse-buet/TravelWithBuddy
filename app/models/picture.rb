@@ -18,4 +18,8 @@
 class Picture < ApplicationRecord
   validates_presence_of :title
   mount_uploader :image, ImageUploader
+	
+	validates :travel_destination_id, presence: true
+	validates :review_id, presence: true
+	validates :user_id, presence: true
 end

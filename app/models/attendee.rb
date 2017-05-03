@@ -18,4 +18,6 @@
 
 class Attendee < ApplicationRecord
 		belongs_to :travel_event, optional: false
+		validates :user_id, presence: true
+		validates :travel_event_id, presence: true
 end

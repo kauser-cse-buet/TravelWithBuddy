@@ -26,4 +26,29 @@ class UserTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
+
+	test "should have first name" do
+		user = User.new
+		user.email = "doe@gmail.com"
+		user.last_name = "doe"
+
+		assert_not user.valid?
+	end
+
+	test "should have last name" do
+		user = User.new
+		user.email = "doe@gmail.com"
+		user.first_name = "john"
+
+		assert_not user.valid?
+	end
+
+	test "should have email" do
+		user = User.new
+		user.first_name = "john"
+		user.last_name = "doe"
+
+		assert_not user.valid?
+	end
+
 end

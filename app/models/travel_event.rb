@@ -24,6 +24,7 @@
 
 
 
+
 class TravelEvent < ApplicationRecord
 	
 	filterrific :available_filters => %w[

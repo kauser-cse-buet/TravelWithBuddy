@@ -71,7 +71,14 @@
                       <i class="glyphicon glyphicon-envelope"></i>
                         Invite
                     <% end %>
+                    <% if travel_event.attendees.where(user_id: @user.id).count == 0 %>
+                      <%=link_to join_path(:id => travel_event.id) , class: 'btn btn-md btn-primary' do%>
+                        <i class="glyphicon glyphicon-envelope"></i>
+                        Join
+                      <% end %>
+                    <% end %>
                   </div>
+
                 <% end %>
 
               </div>

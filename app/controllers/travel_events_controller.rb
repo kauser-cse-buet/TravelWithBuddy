@@ -6,7 +6,7 @@ class TravelEventsController < ApplicationController
 	# GET /travel_events.json
 	def index
 		@upcoming_travel_events = TravelEvent.where('travel_events.start > ?', DateTime.now.to_s(:db))
-
+		@user = User.all.where(admin_id: current_admin.id).first()
 		@filterrific = initialize_filterrific(
 			TravelEvent.where('travel_events.start > ?', DateTime.now.to_s(:db)),
 			params[:filterrific],
@@ -90,7 +90,9 @@ class TravelEventsController < ApplicationController
 		if @travel_event.attendees.count < @travel_event.max_attendance
 			@attendee = Attendee.create(paid: true, user_id: @user.id, travel_event_id: @travel_event_id)
 			if @attendee.id
-				@invitation.destroy
+				if not @invitation.nil?
+					@invitation.destroy
+				end
 				redirect_to travel_event_url(@travel_event), notice: 'You joined the event successfully.'
 
 			else

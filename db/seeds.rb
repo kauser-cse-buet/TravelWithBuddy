@@ -70,10 +70,15 @@
 	admin_milu.save
 
 	0.upto(events_names.length - 1) do |i|
+		ct = DateTime.now
+		from_date = ct
+		to_date = ct + 225.days
 		currentDateTime = DateTime.now
+		upcomingDateTime = Time.at((to_date.to_f - from_date.to_f)*rand + from_date.to_f)
 		currentYear = currentDateTime.year
 		futureYear = currentYear.to_i + 2
 		futureDateTime = DateTime.new(futureYear)
+		duration = Time.at((ct.to_f - (ct - 5.days).to_f)*rand + ct.to_f)
 		# eventName = get_random_word(dictionary) + ' ' + i.to_s
 		event_name = events_names[i]
 		event_description = event_descriptions[i]
@@ -85,16 +90,16 @@
 							   price: rand(1..200),
 							   start: DateTime.now,
 							   travel_destination_id: 1,
-							   duration: Time.new(2002, 1, 31, 1),
+							   duration: duration,
 							   user_id: admin_ahmmed.user.id)
 		else
 			TravelEvent.create(name: event_name,
 							   description: event_description,
 							   max_attendance: rand(1..100),
 							   price: rand(1..200),
-							   start: futureDateTime,
+							   start: upcomingDateTime,
 							   travel_destination_id: 1,
-							   duration: Time.new(2002, 1, 31, 1),
+							   duration: duration,
 							   user_id: admin_ahmmed.user.id)
 
 		end

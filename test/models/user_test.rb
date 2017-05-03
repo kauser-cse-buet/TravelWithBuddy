@@ -26,11 +26,25 @@ class UserTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
+	test "valid user" do
+		user = User.new
+		user.email = "doe@gmail.com"
+		user.first_name = "john"
+		user.last_name = "doe"
+
+		admin = admins(:one)
+		user.admin_id = admin.id
+
+		assert user.valid?
+	end
 
 	test "should have first name" do
 		user = User.new
 		user.email = "doe@gmail.com"
 		user.last_name = "doe"
+
+		admin = admins(:one)
+		user.admin_id = admin.id
 
 		assert_not user.valid?
 	end
@@ -40,6 +54,9 @@ class UserTest < ActiveSupport::TestCase
 		user.email = "doe@gmail.com"
 		user.first_name = "john"
 
+		admin = admins(:one)
+		user.admin_id = admin.id
+
 		assert_not user.valid?
 	end
 
@@ -47,6 +64,9 @@ class UserTest < ActiveSupport::TestCase
 		user = User.new
 		user.first_name = "john"
 		user.last_name = "doe"
+
+		admin = admins(:one)
+		user.admin_id = admin.id
 
 		assert_not user.valid?
 	end

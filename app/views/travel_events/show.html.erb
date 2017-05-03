@@ -3,7 +3,7 @@
       <div class="custom-card-header">
         <div class="row">
           <div>
-            <%= image_tag @travel_event.image_url(:cover_photo).to_s, class: "travel-event-list-image card-img-top"%>
+            <%= image_tag @travel_event.image_url.to_s, size: '500x100', class: "travel-event-list-image card-img-top"%>
           </div>
         </div>
 
@@ -16,7 +16,7 @@
                 <strong>
                   <%= @travel_event.start.strftime("%b, %Y") %>
                 </strong>
-                <span>20</span>
+                <span><%= @travel_event.start.strftime("%d") %></span>
               </time>
             </div>
             <div class="row pl16 pt8">

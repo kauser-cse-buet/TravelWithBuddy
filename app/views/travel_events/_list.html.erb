@@ -13,7 +13,7 @@
                 <% if travel_event.image.file.nil? %>
                     <%= link_to image_tag("card_placeholder.png", class: "travel-event-list-image col-md-12"), travel_event_path(travel_event) %>
                 <% else %>
-                    <%= link_to image_tag(travel_event.image_url(:cover_photo).to_s, class: "travel-event-list-image col-md-12"), travel_event_path(travel_event) %>
+                    <%= link_to image_tag(travel_event.image_url.to_s, size: '500x100', class: "travel-event-list-image col-md-12"), travel_event_path(travel_event) %>
                 <% end %>
 
               </div>

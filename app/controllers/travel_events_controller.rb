@@ -183,6 +183,6 @@ class TravelEventsController < ApplicationController
 
 	# Never trust parameters from the scary internet, only allow the white list through.
 	def travel_event_params
-		params.require(:travel_event).permit(:name, :description, :max_attendance, :price, :start, :duration, :travel_destination_id, :image)
+		params.require(:travel_event).permit(:name, :description, :max_attendance, :price, :start, :duration, :travel_destination_id, :image, :user_id)
 	end
 end

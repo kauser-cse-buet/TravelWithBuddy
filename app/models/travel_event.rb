@@ -109,8 +109,10 @@ class TravelEvent < ApplicationRecord
 		end
 	end
 
-	validates :name, length: {maximum: 50}, presence: true
-	validates :description, length: {maximum: 500}, presence: true
+	validates :name, length: {maximum: 50}, presence: true,uniqueness: true
+	validates :description, length: {maximum: 1000}, presence: true
 	validates :max_attendance, presence: true,inclusion: {in: 1..200}
 	validates :price, numericality: {greater_than_or_equal_to: 0}, presence: true
+	validates :start, presence: true
+	validates :duration, presence: true
 end

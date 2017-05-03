@@ -11,9 +11,9 @@
             <div class="custom-card-image  col-md-6">
               <div class="mt8 mb8">
                 <% if travel_event.image.file.nil? %>
-                    <%= image_tag "card_placeholder.png", class: "travel-event-list-image col-md-12" %>
+                    <%= link_to image_tag("card_placeholder.png", class: "travel-event-list-image col-md-12"), travel_event_path(travel_event) %>
                 <% else %>
-                    <%= image_tag travel_event.image_url(:cover_photo).to_s, class: "travel-event-list-image col-md-12" %>
+                    <%= link_to image_tag(travel_event.image_url(:cover_photo).to_s, class: "travel-event-list-image col-md-12"), travel_event_path(travel_event) %>
                 <% end %>
 
               </div>

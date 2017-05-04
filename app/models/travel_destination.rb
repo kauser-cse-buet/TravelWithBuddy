@@ -11,5 +11,15 @@
 #
 
 
+
+
 class TravelDestination < ApplicationRecord
+	has_many :travel_events
+
+
+
+	validates :address, presence: true
+	validates :city, presence: true
+	validates :state, presence: true
+
 end

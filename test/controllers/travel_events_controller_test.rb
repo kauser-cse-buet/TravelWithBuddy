@@ -4,7 +4,7 @@ class TravelEventsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @travel_event = travel_events(:one)
   end
-
+=begin
   test "should get index" do
     get travel_events_url
     assert_response :success
@@ -45,4 +45,5 @@ class TravelEventsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to travel_events_url
   end
+=end
 end

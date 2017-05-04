@@ -38,7 +38,11 @@ class TravelEvent < ApplicationRecord
 	has_many :reviews, :dependent => :destroy
 	has_many :posts, :dependent => :destroy
 	has_many :attendees, :dependent => :destroy
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> development-04162017
 	scope :start_gte, lambda { |reference_dt|
 		where('travel_events.start >= ?', reference_dt)
 	}

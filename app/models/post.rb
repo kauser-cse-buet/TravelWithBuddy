@@ -11,6 +11,8 @@
 #  travel_event_id :integer
 #
 
+
+
 class Post < ApplicationRecord
 	belongs_to :travel_event
 	belongs_to :user

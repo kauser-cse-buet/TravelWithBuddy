@@ -16,10 +16,12 @@
 
 
 
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  paid: false
-
-two:
-  paid: false
+class Attendee < ApplicationRecord
+<<<<<<< HEAD
+	belongs_to :travel_event, optional: false
+=======
+		belongs_to :travel_event, optional: false
+		validates :user_id, presence: true
+		validates :travel_event_id, presence: true
+>>>>>>> development-04162017
+end

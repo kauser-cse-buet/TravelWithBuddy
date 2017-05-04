@@ -17,13 +17,11 @@
         <% if @has_review == false %>
             <div class="row-padding">
 
-              <div class="pull-right">
-                <div class="text-center pt10">
-                  <%= link_to new_review_path(travel_event_id: @travel_event.id), class: "btn btn-sm btn-default" do %>
-                      <i class="glyphicon glyphicon-plus"></i>
-                      Write a Review
-                  <% end %>
-                </div>
+              <div class="text-center">
+                <%= link_to new_review_path(travel_event_id: @travel_event.id), class: "btn btn-sm btn-default" do %>
+                    <i class="glyphicon glyphicon-plus"></i>
+                    Write a Review
+                <% end %>
               </div>
 
             </div>
@@ -32,78 +30,87 @@
     </div>
 
     <% if @reviews.size > 0 %>
-        <div class="container-fluid">
-          <div class="inner">
-            <div class="rating">
-              <span class="rating-num"><%= @average_rating.round(2) %></span>
-              <div class="rating-stars">
-                <div class="star-rating-avg" data-score=<%= @average_rating.round(2) %>></div>
-              </div>
-              <div class="rating-users">
-                <span class="glyphicon glyphicon-user"></span>
-                <%= @reviews.count(:all) %>
-                total
-              </div>
-            </div>
 
-            <div class="histo">
-              <div class="five histo-rate">
+        <div class="row">
+          <div class="col-md-offset-2 col-md-8">
+            <div class="container-fluid">
+              <div class="inner">
+                <div class="rating">
+                  <span class="rating-num"><%= @average_rating.round(2) %></span>
+                  <div class="rating-stars">
+                    <div class="star-rating-avg" data-score=<%= @average_rating.round(2) %>></div>
+                  </div>
+                  <div class="rating-users">
+                    <span class="glyphicon glyphicon-user"></span>
+                    <%= @reviews.count(:all) %>
+                    total
+                  </div>
+                </div>
+
+                <div class="histo">
+                  <div class="five histo-rate">
                 <span class="histo-star">
                   <i class="active glyphicon glyphicon-star"></i> 5
                 </span>
-                <span class="bar-block">
+                    <span class="bar-block">
                   <span id="bar-five" class="bar" data-score=<%= @reviews.where('rating > 4.5').count %>>
-                    <%= @reviews.where('rating > 4.5').count %>
+                    <%= @five_star_count %>
                   </span>
                 </span>
-              </div>
+                  </div>
 
-              <div class="four histo-rate">
+                  <div class="four histo-rate">
                 <span class="histo-star">
                   <i class="active glyphicon glyphicon-star"></i> 4
                 </span>
-                <span class="bar-block">
+                    <span class="bar-block">
                   <span id="bar-four" class="bar">
-                    <%= @reviews.where('rating >= 3.5 and rating < 4.5').count %>
+                    <%= @four_star_count %>
                   </span>
                 </span>
-              </div>
+                  </div>
 
-              <div class="three histo-rate">
+                  <div class="three histo-rate">
                 <span class="histo-star">
                   <i class="active glyphicon glyphicon-star"></i> 3
                 </span>
 
-                <span class="bar-block">
+                    <span class="bar-block">
                   <span id="bar-three" class="bar">
-                    <%= @reviews.where('rating >= 2.5 and rating < 3.5').count %>
+                    <%= @three_star_count %>
                   </span>
                 </span>
-              </div>
+                  </div>
 
-              <div class="two histo-rate">
+                  <div class="two histo-rate">
                 <span class="histo-star">
                   <i class="active glyphicon glyphicon-star"></i> 2
                 </span>
-                <span class="bar-block">
+                    <span class="bar-block">
                   <span id="bar-two" class="bar">
-                    <%= @reviews.where('rating >= 1.5 and rating < 2.5').count %>
+                    <%= @two_star_count %>
                   </span>
                 </span>
-              </div>
+                  </div>
 
-              <div class="one histo-rate">
+                  <div class="one histo-rate">
                   <span class="histo-star">
                     <i class="active glyphicon glyphicon-star"></i> 1
                   </span>
-                <span class="bar-block">
+                    <span class="bar-block">
                     <span id="bar-one" class="bar">
-                      <%= @reviews.where('rating >= 0.5 and rating < 1.5').count %>
+                      <%= @one_star_count %>
                     </span>
                   </span>
+                  </div>
+                </div>
+
               </div>
             </div>
+
           </div>
+
+
         </div>
 
         <%= render(
@@ -123,10 +130,10 @@
 
 
 
-        <%= render(
-                partial: 'posts/list',
-                locals: {posts: @posts}
-            ) %>
+    <%= render(
+            partial: 'posts/list',
+            locals: {posts: @posts}
+        ) %>
 
 
   </div>
@@ -136,6 +143,8 @@
 <script type="text/javascript">
 	$(document).ready(function () {
 		$('.bar span').hide();
+
+		default_width = 10
 
 		if (typeof $('#bar-five')[0] != 'undefined' &&
 			typeof $('#bar-four')[0] != 'undefined' &&
@@ -156,11 +165,11 @@
 			twoPerc = (twoValue * 100 / sum)
 			onePerc = (oneValue * 100 / sum)
 
-			fivePerc = (fivePerc == 0) ? 5 : fivePerc
-			fourPerc = (fourPerc == 0) ? 5 : fourPerc
-			threePerc = (threePerc == 0) ? 5 : threePerc
-			twoPerc = (twoPerc == 0) ? 5 : twoPerc
-			onePerc = (onePerc == 0) ? 5 : onePerc
+			fivePerc = (fivePerc < default_width) ? default_width : fivePerc
+			fourPerc = (fourPerc < default_width) ? default_width : fourPerc
+			threePerc = (threePerc < default_width) ? default_width : threePerc
+			twoPerc = (twoPerc < default_width) ? default_width : twoPerc
+			onePerc = (onePerc < default_width) ? default_width : onePerc
 
 
 			$('#bar-five').animate({

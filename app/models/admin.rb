@@ -29,12 +29,23 @@
 
 
 
+
+
 class Admin < ApplicationRecord
 	has_one :user, :dependent => :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+
+    validates :email, presence: true
+    validates :first_name, presence: true
+    validates :last_name, presence: true
+    validates :phone, format: {with: /\A\d+{3}-\d+{3}-\d+{4}\z/}, allow_blank: true
+    validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}
+    validates :address, length: {maximum: 70}, allow_blank: true
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
+
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |admin|

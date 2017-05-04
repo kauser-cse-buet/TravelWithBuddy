@@ -15,6 +15,8 @@
 
 
 
+
+
 class Review < ApplicationRecord
 	belongs_to :travel_event, optional: true
 	belongs_to :user

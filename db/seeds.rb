@@ -46,39 +46,12 @@
 	# 	dictionary[rand(dictionary.length)]
 	# end
 
-	0.upto(events_names.length - 1) do |i|
-		currentDateTime = DateTime.now
-		currentYear = currentDateTime.year
-		futureYear = currentYear.to_i + 2
-		futureDateTime = DateTime.new(futureYear)
-		# eventName = get_random_word(dictionary) + ' ' + i.to_s
-		event_name = events_names[i]
-		event_description = event_descriptions[i]
 
-		if i % 2 == 0
-			TravelEvent.create(name: event_name,
-				description: event_description, 
-				max_attendance: rand(1..100),
-				price: rand(1..200),
-				start: DateTime.now,
-				travel_destination_id: 1,
-				duration: Time.new(2002, 1, 31, 1))
-		else
-			TravelEvent.create(name: event_name,
-				description: event_description, 
-				max_attendance: rand(1..100),
-				price: rand(1..200),
-				start: futureDateTime,
-				travel_destination_id: 1,
-				duration: Time.new(2002, 1, 31, 1))
 
-		end
-	end
-
-	admin_ahmmed = Admin.create(first_name: 'Kauser', last_name: 'Ahmed', address: 'memphis', phone: '9013154477', email: 'mahmmed@memphis.edu', password: '123456', password_confirmation: '123456')
-	admin_isaac = Admin.create(first_name: 'Isaac', last_name: 'Roland', address: 'memphis', phone: '9013158877', email: 'iroland@memphis.edu', password: '123456', password_confirmation: '123456')
-	admin_mislam = Admin.create(first_name: 'Maminur', last_name: 'Islam', address: 'memphis', phone: '9013154467', email: 'mislam@memphis.edu', password: '123456', password_confirmation: '123456')
-	admin_milu = Admin.create(first_name: 'Milu', last_name: 'Hasan', address: 'memphis', phone: '9013154477', email: 'mhasan@memphis.edu', password: '123456', password_confirmation: '123456')
+	admin_ahmmed = Admin.create(first_name: 'Kauser', last_name: 'Ahmmed', address: 'memphis', phone: '901-315-4477', email: 'mahmmed@memphis.edu', password: '123456', password_confirmation: '123456')
+	admin_isaac = Admin.create(first_name: 'Isaac', last_name: 'Roland', address: 'memphis', phone: '901-315-8877', email: 'iroland@memphis.edu', password: '123456', password_confirmation: '123456')
+	admin_mislam = Admin.create(first_name: 'Maminur', last_name: 'Islam', address: 'memphis', phone: '901-315-4467', email: 'mislam@memphis.edu', password: '123456', password_confirmation: '123456')
+	admin_milu = Admin.create(first_name: 'Milu', last_name: 'Hasan', address: 'memphis', phone: '901-315-4477', email: 'mhasan@memphis.edu', password: '123456', password_confirmation: '123456')
 
 
 	admin_ahmmed.user = User.create(first_name: admin_ahmmed.first_name, last_name: admin_ahmmed.last_name , address: admin_ahmmed.address, phone: admin_ahmmed.phone, email: admin_ahmmed.email)
@@ -95,6 +68,42 @@
 	admin_isaac.save
 	admin_mislam.save
 	admin_milu.save
+
+	0.upto(events_names.length - 1) do |i|
+		ct = DateTime.now
+		from_date = ct
+		to_date = ct + 225.days
+		currentDateTime = DateTime.now
+		upcomingDateTime = Time.at((to_date.to_f - from_date.to_f)*rand + from_date.to_f)
+		currentYear = currentDateTime.year
+		futureYear = currentYear.to_i + 2
+		futureDateTime = DateTime.new(futureYear)
+		duration = Time.at((ct.to_f - (ct - 5.days).to_f)*rand + ct.to_f)
+		# eventName = get_random_word(dictionary) + ' ' + i.to_s
+		event_name = events_names[i]
+		event_description = event_descriptions[i]
+
+		if i % 2 == 0
+			TravelEvent.create(name: event_name,
+							   description: event_description,
+							   max_attendance: rand(1..100),
+							   price: rand(1..200),
+							   start: DateTime.now,
+							   travel_destination_id: 1,
+							   duration: duration,
+							   user_id: admin_ahmmed.user.id)
+		else
+			TravelEvent.create(name: event_name,
+							   description: event_description,
+							   max_attendance: rand(1..100),
+							   price: rand(1..200),
+							   start: upcomingDateTime,
+							   travel_destination_id: 1,
+							   duration: duration,
+							   user_id: admin_ahmmed.user.id)
+
+		end
+	end
 
 
 
